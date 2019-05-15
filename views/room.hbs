@@ -1,15 +1,16 @@
-
-    <div id="root">
-    </div>
-    <div id="ui">
-        <div class="arr" id="r"></div>
-        <div class="arr" id="l"></div>
+    <div class="position-relative">
+        <div id="root">
+        </div>
+        <div id="ui">
+            <div class="arr" id="r"></div>
+            <div class="arr" id="l"></div>
+        </div>
     </div>
 <script>
-    $.getScript("../javascripts/three_ver97.js", function()
+    $.getScript("/javascripts/three_ver97.js", function()
     {
         var imported = document.createElement('script');
-        imported.src = "../javascripts/room/Main.js"
+        imported.src = "/javascripts/room/Main.js"
         document.head.appendChild(imported);
     });
     

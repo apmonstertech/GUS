@@ -69,3 +69,16 @@ body{
 .color-white{
     color:white;
 }
+.arr{
+    position: absolute;
+    height: 100%;
+    top:0;
+    width: 4rem;
+    background-color: black;
+}
+#r{
+    right: 0;
+}
+#l{
+    left: 0;
+}

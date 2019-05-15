@@ -18,34 +18,36 @@ $(document).ready(function () {
     })
     var floor = new THREE.Mesh(floorGeo,floorMat)
     scene.add(floor)
-    var wall1Geo = new THREE.BoxGeometry(100,100,2)
+    var wall1Geo = new THREE.BoxGeometry(200,200,2)
     var wall1Mat = new THREE.MeshNormalMaterial({
         color:0xff000000
     })
     var wall1 = new THREE.Mesh(wall1Geo,wall1Mat)
-    wall1.position.set(0,0,50)
+    wall1.position.set(0,0,100)
     scene.add(wall1)
     var wall2 = wall1.clone();
-    wall2.position.z = -50
+    wall2.position.z = -100
     scene.add(wall2)
-    var wall3Geo = new THREE.BoxGeometry(2,100,100)
+    var wall3Geo = new THREE.BoxGeometry(2,200,100)
     var wall3Mat = new THREE.MeshNormalMaterial({
         color:0xffffff
     })
     var wall3 = new THREE.Mesh(wall3Geo,wall3Mat)
-    wall3.position.set(50,0,0);
+    wall3.position.set(100,0,0);
     scene.add(wall3);
     var wall4 = wall3.clone();
-    wall4.position.x = -50;
+    wall4.position.x = -100;
     scene.add(wall4)
-    var axes = new THREE.AxesHelper(1000)
-    scene.add(axes)
     camera.position.set(0,25,0)
-    var lookPointG = new THREE.BoxGeometry(2,2,2);
-    var lookPointM = new THREE.MeshNormalMaterial({
-        color:0xffffff
-    })
-    var lookPoint = new THREE.Mesh(lookPointG,lookPointM);
+    var wall5 = wall1.clone();
+    wall5.position.set(90,0,80)
+    scene.add(wall5)
+    wall5.lookAt(scene.position)
+    var wall6 = wall1.clone();
+    wall6.position.set(90,0,-80)
+    scene.add(wall6)
+    wall6.lookAt(scene.position)
+    var lookPoint = new THREE.Mesh();
     lookPoint.position.x = 100
     lookPoint.position.y = 25
     lookPoint.position.z = 0
@@ -64,21 +66,24 @@ $(document).ready(function () {
     })
     $("#l").click(function(){
         if(counter == 0){
+            $("#l").hide()
             point = new THREE.Vector3(0,25,-100);
             counter+=1
         }
         if(counter == -1){
+            $("#r").show()
             point = new THREE.Vector3(100,25,0);
             counter+=1
         }
     })
     $("#r").click(function(){
         if(counter == 0){
+            $("#r").hide()
             point = new THREE.Vector3(0,25,100);
             counter-=1
-
         }
         if(counter == 1){
+            $("#l").show()
             point = new THREE.Vector3(100,25,0);
             counter-=1
         }
