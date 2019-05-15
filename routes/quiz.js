@@ -7,7 +7,12 @@ var random = require('mongoose-simple-random');
 var setUp = []
 
 router.get('/', function (req, res, next) {
-    res.render('panel');
+    if (req.isAuthenticated()) {
+        res.render('panel', { "name": req.user.username })
+        console.log(req.user.username)
+    } else {
+        res.render('panel');
+    }
 });
 
 router.post('/', function (req, res, next) {
@@ -15,11 +20,16 @@ router.post('/', function (req, res, next) {
 });
 
 router.get('/starter', function (req, res, next) {
-    res.render('quizStarter')
+    if (req.isAuthenticated()) {
+        res.render('quizStarter', { "name": req.user.username })
+        console.log(req.user.username)
+    } else {
+        res.render('quizStarter')
+    }
 });
 
 router.post('/starter', function (req, res, next) {
-    Quiz.findRandom({}, {}, { limit: 2 }, function (err, results) {
+    Quiz.findRandom({}, {}, { limit: 3 }, function (err, results) {
         if (!err) {
             console.log(results);
             setUp = results

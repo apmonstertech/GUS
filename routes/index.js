@@ -5,12 +5,6 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
   // res.render('index', { title: 'Express' });
 
-  if (req.isAuthenticated()) {
-    res.render('index', { "name": req.user.username })
-    console.log(req.user.username)
-  } else {
-    res.render('index')
-  }
 
   // req.flash('error', 'XDDDDDDDDDDDDDDDDDDDDDDDD')
   //res.cookie('name', 'express', { expire: 360000 + Date.now() })
@@ -24,8 +18,14 @@ router.get('/', function (req, res, next) {
   } else {
     req.session.page_views = 1;
   }
-
+  if (req.isAuthenticated()) {
+    res.render('index', { "name": req.user.username })
+    console.log(req.user.username)
+  } else {
+    res.render('index')
+  }
 });
+
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {

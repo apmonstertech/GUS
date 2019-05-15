@@ -145,7 +145,7 @@ router.get('/logout', function (req, res) {
   res.redirect('/users/login')
 })
 
-router.get('/dashboard', function (req, res) {
+router.get('/profile', function (req, res) {
 
 })
 

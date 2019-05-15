@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <title>NODE</title>
 
 </head>
@@ -16,17 +20,43 @@
         <header class="bg-success text-right pt-2 pb-2 d-flex justify-content-between align-items-center">
             <span id="logo" class="ml-5"> Quiz Game Logo </span>
             <div class="mr-5">
-                <img src="/gfx/icon.png" class="icon" alt="">
-                <img src="/gfx/plflag.png" class="icon" alt="">
-                <img src="/gfx/ukflag.png" class="icon" alt="">
-                <button id="login" class="btn btn-success">Zaloguj się</button>
-                <button id="reg" class="btn btn-success">Zarejestruj się</button>
+                {{#if name}}
+                <div class="dropdown d-inline-block mr-2">
+                    <button class="btn btn-secondary dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="/gfx/icon.png" class="icon rounded">
+                        <span class="">{{name}}</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a id="my_prof" class="dropdown-item">Mój profil</a>
+                        <a id="rank" class="dropdown-item">Ranking</a>
+                        <a id="log" class="dropdown-item" href="/users/logout">Wyloguj</a>
+                    </div>
+                </div>
+                {{/if}} {{#unless name}}
+                <div class="dropdown d-inline-block mr-2">
+                    <button class="btn btn-secondary dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="/gfx/icon.png" class="icon rounded">
+                        <span class="">GOŚĆ</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a id="rank" class="dropdown-item">Ranking</a>
+                        <a id="log" class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Zaloguj</a>
+                        <a id="reg" class="dropdown-item">Zarejestruj się</a>
+                    </div>
+                </div>
+                {{/unless}}
             </div>
         </header>
         {{{body}}}
     </div>
     {{>additional}}
     <script>
+        $("#log").click(function () {
+            $(".login-modal").css("display", "block")
+        })
+
         $("#down").click(function () {
             var height = $("body")[0].clientHeight
             var am = 0;

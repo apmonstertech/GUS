@@ -29,11 +29,12 @@ var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('views', path.join(__dirname, '/views/'))
-app.engine('hbs', hbs({ defaultLayout: 'main.hbs', extname: '.hbs',
+app.engine('hbs', hbs({
+  defaultLayout: 'main.hbs', extname: '.hbs',
   partialsDir: __dirname + '/views/partials'
 }));
 app.set('view engine', 'hbs')
-
+// hbs.localsAsTemplateData(app);
 
 
 //Handle File uploads
@@ -44,6 +45,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cookieParser());
+
+
+
 
 var hour = 3600000;
 //Handle Sessions
@@ -90,11 +94,19 @@ app.use('/room', roomRouter);
 app.use('/lobby', lobbyRouter);
 
 app.get('*', function (req, res, next) {
-  res.locals.user = req.user || null
+  console.log(req.user)
+  res.locals.user = req.user.username || null
+  console.log(res.locals.user)
   next()
 })
 
-
+// exports.isAuthenticated = (req, res, next) => {
+//   if (req.isAuthenticated()) {
+//     app.locals.name = req.user.username || null
+//     return next()
+//   }
+//   res.redirect('/')
+// }
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

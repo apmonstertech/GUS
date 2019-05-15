@@ -13,6 +13,10 @@ body {
     font-size: 1.5rem;
 }
 
+#Capa_1 {
+    position: relative;
+}
+
 .dropdown {
     min-width: 10rem;
 }
@@ -66,7 +70,7 @@ body {
 .arrow {
     width: 5rem;
     opacity: 1;
-    fill: #ffffff;
+    fill: #3E3E3E;
     display: block;
 
 }
@@ -107,16 +111,57 @@ body {
 #up {
     width: 100%;
     user-select: none;
-    animation: arrow 5s linear infinite;
-    /* //position: absolute; */
+    position: absolute;
+    text-shadow: none;
+    box-shadow: none;
+    left: 0;
+    animation: arrow .6s linear infinite;
+    animation-direction: alternate-reverse;
 }
+
+#up:focus {
+    outline: none !important;
+    border: none;
+}
+
+/* .login-modal {
+    width: 800px !important;
+} */
+
+.login-header {
+    background-color: #2FA812;
+}
+
+.dropdown {
+    margin: 0 !important;
+}
+
+.mr-5 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dropdown-menu>a {
+    cursor: pointer;
+}
+
+
 
 @keyframes arrow {
     0% {
-        background-color: black;
+        top: 20px;
+    }
+
+    33% {
+        top: 15px;
+    }
+
+    66% {
+        top: 10px;
     }
 
     100% {
-        background-color: yellow;
+        top: 0px;
     }
 }

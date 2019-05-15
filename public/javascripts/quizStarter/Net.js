@@ -10,7 +10,7 @@ class Net {
             },
             type: "POST",
             success: function (data) {
-                console.log(data)
+                console.log(JSON.stringify(data))
             },
             error: function (xhr, status, error) {
                 console.log(xhr);
