@@ -1,61 +1,77 @@
-body{
+body {
     min-height: 100vh;
     overflow: hidden;
     background-image: url(../gfx/background.png)
 }
-.icon{
+
+.icon {
     height: 40px;
 }
-#logo{
+
+#logo {
     font-weight: 1000;
     font-size: 1.5rem;
 }
-.dropdown{
+
+.dropdown {
     min-width: 10rem;
 }
-.dropdown-toggle{
+
+.dropdown-toggle {
     width: 100%;
 }
-#start_game{
+
+#start_game {
     font-size: 1rem;
     border-radius: 0;
 }
-.full-height{
-    height:100vh;
+
+.full-height {
+    height: 100vh;
 }
-#info{
-    width:100vw;
-    top:100vh;
+
+#info {
+    width: 100vw;
+    top: 100vh;
+
 }
-.jumbotron{
+
+.jumbotron {
     background-color: transparent;
-    color:white;
+    color: white;
 }
-#world{
+
+#world {
     z-index: -1;
-    background-image: url(../gfx/world.png); 
+    background-image: url(../gfx/world.png);
     position: absolute;
     background-position-x: -20vw;
     background-size: 140vw;
     width: 100%;
     height: 200%;
 }
-@media (min-width: 576px){
-    .jumbotron{
+
+@media (min-width: 576px) {
+    .jumbotron {
         padding: 1.5rem 2rem;
     }
 }
-.title{
+
+.title {
     font-size: 1.7rem;
     font-weight: 500;
     font-style: bold;
 }
-.arrow{
+
+.arrow {
     width: 5rem;
-    opacity:1;
-    fill:#090909;
+    opacity: 1;
+    fill: #ffffff;
+    display: block;
+
 }
-#country_flag{
+
+#country_flag {
     flex-grow: 2;
     background-image: url(../gfx/pl.png);
     height: 55vw;
@@ -63,22 +79,44 @@ body{
     background-position-x: -10vw;
     background-position-y: -2vh;
 }
-#data{
-    flex-grow:1;
+
+#data {
+    flex-grow: 1;
 }
-.color-white{
-    color:white;
+
+.color-white {
+    color: white;
 }
-.arr{
+
+.arr {
     position: absolute;
     height: 100%;
-    top:0;
+    top: 0;
     width: 4rem;
     background-color: black;
 }
-#r{
+
+#r {
     right: 0;
 }
-#l{
+
+#l {
     left: 0;
+}
+
+#up {
+    width: 100%;
+    user-select: none;
+    animation: arrow 5s linear infinite;
+    /* //position: absolute; */
+}
+
+@keyframes arrow {
+    0% {
+        background-color: black;
+    }
+
+    100% {
+        background-color: yellow;
+    }
 }
