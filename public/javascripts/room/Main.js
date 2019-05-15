@@ -8,9 +8,6 @@ $(document).ready(function () {
         10000    // maxymalna renderowana odległość od kamery
     );
     var renderer = new THREE.WebGLRenderer();
-    var windowHeight = $(window).height()
-    var windowWidth = $(window).width()
-    renderer.setSize(windowWidth, windowHeight);
     renderer.setClearColor(0xaaaaaa);
     var floorGeo = new THREE.BoxGeometry(100,2,100)
     var floorMat = new THREE.MeshNormalMaterial({
@@ -89,6 +86,9 @@ $(document).ready(function () {
         }
     })
     function render() {
+        var windowHeight = $(window).height()
+        var windowWidth = $(window).width()
+        renderer.setSize(windowWidth, windowHeight);
         if(Math.floor(lookPoint.position.clone().distanceTo(point)) >1){
             rotateDelta = point.clone().sub(lookPoint.position).normalize()
             lookPoint.translateOnAxis(rotateDelta, 4)
