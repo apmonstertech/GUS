@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Page login</h2>
+
+
+    <form action="/users/login" method="POST" autocomplete="off">
+        <div class=" form-group ">
+            <label for=" ">Username</label>
+            <input type="text " class="form-control " name="username">
+        </div>
+        <div class="form-row ">
+            <label for=" ">Password</label>
+            <input type="text " class="form-control " name="password">
+        </div>
+        <div class="form-group ">
+            <button type="submit " class="btn btn-info "><i class="fa fa-database "></i> Submit</button>
+        </div>
+    </form>
+    {{#if errors}}
+    <div class="errors">
+        <h1> {{errors}}</h1>
+    </div>
+    {{/if}}
+</div>
