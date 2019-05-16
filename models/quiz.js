@@ -4,12 +4,6 @@ var random = require('mongoose-simple-random');
 
 var db = mongoose.connection;
 
-// var collection = db.collection('quiz')
-
-// collection.find().toArray(function(err, kittens) {
-//     // here ...
-// });
-
 var QuizSchema = mongoose.Schema({
     question: {
         type: String,
@@ -40,14 +34,6 @@ var Quiz = module.exports = mongoose.model('Quiz', QuizSchema)
 //     // will be of length 10
 //     console.log(posts)
 // });
-
-
-
-
-
-
-
-
 
 
 

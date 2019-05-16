@@ -20,10 +20,7 @@
         <header class="bg-success text-right pt-2 pb-2 d-flex justify-content-between align-items-center">
             <span id="logo" class="ml-5"> Quiz Game Logo </span>
             <div class="mr-5">
-                {{#if message}}
-                    {{message}}
-                {{/if}}
-                {{#if name}}
+                {{#if message}} {{message}} {{/if}} {{#if name}}
                 <div class="dropdown d-inline-block mr-2">
                     <button class="btn btn-success dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,7 +43,7 @@
                     <div class="dropdown-menu">
                         <a id="rank" class="dropdown-item">Ranking</a>
                         <a id="log" class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Zaloguj</a>
-                        <a id="reg" class="dropdown-item">Zarejestruj się</a>
+                        <a id="reg" class="dropdown-item" data-toggle="modal" data-target="#registerModal">Zarejestruj się</a>
                     </div>
                 </div>
                 {{/unless}}

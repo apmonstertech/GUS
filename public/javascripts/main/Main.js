@@ -1,8 +1,8 @@
 var net = new Net()
 
-$("#log").click(function () {
-    $(".login-modal").css("display", "block")
-})
+// $("#log").click(function () {
+//     $(".login-modal").css("display", "block")
+// })
 
 $(".cls-15").click(function (e) {
     net.sendData(e.target.id)
@@ -23,8 +23,8 @@ $(".cls-15").click(function (e) {
         }
     }, 1)
     $("#country_name").html(e.target.id)
-    
-    
+
+
 })
 $("#up").click(function () {
     var height = $("body")[0].clientHeight

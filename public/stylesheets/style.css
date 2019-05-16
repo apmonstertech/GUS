@@ -128,6 +128,81 @@ body {
 
 .login-header {
     background-color: #2FA812;
+    border: none !important;
+    border-radius: 0;
+}
+
+.modal-title {
+    font-size: 40px;
+}
+
+.modal-footer {
+    border: none !important;
+}
+
+.modal-content,
+.modal-body {
+    background-color: #16496D;
+    border-radius: 0;
+    border: none;
+}
+
+.modal-body {
+    border: none;
+}
+
+.form-control-input {
+    background-color: #16496D;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #2FA812;
+    color: rgba(47, 168, 18, 0.27);
+    padding: 0;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.form-control-input::placeholder {
+    color: rgba(47, 168, 18, 0.27);
+}
+
+.form-control-input:focus {
+    background-color: #16496D;
+    text-shadow: none;
+    box-shadow: none;
+    color: rgba(47, 168, 18, 0.27);
+    outline: none;
+}
+
+.form-control-title {
+    text-transform: uppercase;
+    color: #2FA812;
+    font-size: 16px;
+    font-weight: initial;
+}
+
+.btn-control,
+.btn-control-login {
+    background-color: #2FA812;
+    width: 100%;
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
+    border: 1px solid #707070;
+    padding: 16px 10px;
+    border-radius: 0;
+    margin: 10px 0;
+}
+
+.btn-control-login {
+    background-color: #16496D;
+    border: 1px solid rgba(47, 168, 18, 1);
+}
+
+.btn-title-loginup {
+    color: rgba(47, 168, 18, 1);
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .dropdown {
@@ -142,6 +217,13 @@ body {
 
 .dropdown-menu>a {
     cursor: pointer;
+}
+
+@media (min-width: 992px) {
+    .modal-dialog {
+        max-width: 800px;
+    }
+
 }
 
 
@@ -163,25 +245,30 @@ body {
         top: 0px;
     }
 }
-.b-transparent{
+
+.b-transparent {
     background-color: transparent
 }
-.card-img{
+
+.card-img {
     height: 300px;
 }
-.circle{
+
+.circle {
     height: 8rem;
     width: 8rem;
     border-radius: 50%;
     display: inline-block;
 }
 
-.question{
-    max-height:8rem;
+.question {
+    max-height: 8rem;
 }
-path.cls-15:hover{
-    fill:#ff0!important;
+
+path.cls-15:hover {
+    fill: #ff0 !important;
 }
-path{
-    pointer-events:all!important;
+
+path {
+    pointer-events: all !important;
 }
