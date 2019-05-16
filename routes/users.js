@@ -12,6 +12,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/register', function (req, res, next) {
+  console.log('register')
   res.render('register', { title: "Register Page" })
 });
 

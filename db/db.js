@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/ProjectGUS', { useNewUrlParser: true }, (err) => {
+mongoose.connect('mongodb+srv://Admin:admin@cluster0-qycbe.mongodb.net/ProjectGUS?retryWrites=true', { useNewUrlParser: true }, (err) => {
     if (!err) {
         console.log('MongoDB Connection Succeeded')
         // mongoose.connection.db.listCollections().toArray(function (err, names) {
@@ -10,9 +10,8 @@ mongoose.connect('mongodb://localhost:27017/ProjectGUS', { useNewUrlParser: true
     } else {
         console.log('Error in DB connection : ' + err)
     }
+    
 });
-
 // var db = mongoose.connection;
-
 // var collections = mongoose.connections[0].collections;
 // var names = [];
