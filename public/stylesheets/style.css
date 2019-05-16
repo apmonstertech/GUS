@@ -46,8 +46,6 @@ body {
 }
 
 #world {
-    z-index: -1;
-    background-image: url(../gfx/world.png);
     position: absolute;
     background-position-x: -20vw;
     background-size: 140vw;
@@ -164,4 +162,26 @@ body {
     100% {
         top: 0px;
     }
+}
+.b-transparent{
+    background-color: transparent
+}
+.card-img{
+    height: 300px;
+}
+.circle{
+    height: 8rem;
+    width: 8rem;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.question{
+    max-height:8rem;
+}
+path.cls-15:hover{
+    fill:#ff0!important;
+}
+path{
+    pointer-events:all!important;
 }
