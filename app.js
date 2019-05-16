@@ -55,7 +55,10 @@ app.use(session({
   secret: 'secret',
   saveUninitialized: true,
   resave: false,
-  name: 'gus'
+  name: 'gus',
+  cookie: {
+    // maxAge: hour*60
+  }
 }))
 
 //Passport
@@ -95,7 +98,7 @@ app.use('/lobby', lobbyRouter);
 
 app.get('*', function (req, res, next) {
   console.log(req.user)
-  res.locals.user = req.user.username || null
+  res.locals.user = req.user.username
   console.log(res.locals.user)
   next()
 })
@@ -117,6 +120,7 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
+  res.locals.user = req.user.username
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page

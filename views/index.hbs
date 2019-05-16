@@ -59,7 +59,10 @@
 </div>
 <button id="down" class="btn btn-primary">DOWN</button>
 <script>
+     $.getScript("/javascripts/main/Net.js", function()
+    {
     var imported = document.createElement('script');
         imported.src = "/javascripts/main/Main.js"
         document.head.appendChild(imported);
+    })
 </script>

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Quiz = require('../models/quiz');
+
 require('../db/db')
 const mongoose = require('mongoose');
 var random = require('mongoose-simple-random');
@@ -36,6 +37,7 @@ router.post('/starter', function (req, res, next) {
             res.send(results)
         }
     });
+    
 });
 
 

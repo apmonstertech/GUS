@@ -1,8 +1,11 @@
+var net = new Net()
+
 $("#log").click(function () {
     $(".login-modal").css("display", "block")
 })
 
 $(".cls-15").click(function (e) {
+    net.sendData(e.target.id)
     var height = $("body")[0].clientHeight
     var am = 0;
     $("#up").css("opacity", 0)
@@ -20,6 +23,8 @@ $(".cls-15").click(function (e) {
         }
     }, 1)
     $("#country_name").html(e.target.id)
+    
+    
 })
 $("#up").click(function () {
     var height = $("body")[0].clientHeight
@@ -38,3 +43,4 @@ $("#up").click(function () {
     }, 1)
 
 })
+

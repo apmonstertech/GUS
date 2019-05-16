@@ -1,11 +1,9 @@
 var express = require('express');
 var router = express.Router();
-
+var Countries = require('../models/countries');
 /* GET home page.  ensureAuthenticated, */
 router.get('/', function (req, res, next) {
   // res.render('index', { title: 'Express' });
-
-
   // req.flash('error', 'XDDDDDDDDDDDDDDDDDDDDDDDD')
   //res.cookie('name', 'express', { expire: 360000 + Date.now() })
   var hour = 3600000;
@@ -25,6 +23,19 @@ router.get('/', function (req, res, next) {
     res.render('index')
   }
 });
+
+router.post("/", function(req, res, next){
+  console.log(req.body.country)
+  var country = req.body.country
+  Countries.find({code:country},function(err, dosc){
+    if(!err){
+        console.log(dosc)
+        res.send(dosc)
+    }else{
+      console.log("ERROR in counry")
+    }
+})
+})
 
 
 function ensureAuthenticated(req, res, next) {
