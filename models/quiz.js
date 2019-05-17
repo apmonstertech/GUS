@@ -19,6 +19,9 @@ var QuizSchema = mongoose.Schema({
     },
     ans4: {
         type: String
+    },
+    ansRight: {
+        type: String
     }
 })
 
