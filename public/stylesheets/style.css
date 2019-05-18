@@ -1,7 +1,10 @@
+*{
+    text-shadow:1px 1px 0 rgba(0,0,0,0.6);
+}
 body {
     min-height: 100vh;
     overflow: hidden;
-    background-image: url(../gfx/background.png)
+    background-image: url(../gfx/background.png);
 }
 
 .icon {
@@ -47,9 +50,8 @@ body {
 
 #world {
     position: absolute;
-    background-position-x: -20vw;
-    background-size: 140vw;
-    width: 100%;
+    left:-10vw;
+    width: 120vw;
     height: 200%;
 }
 
@@ -76,10 +78,13 @@ body {
 #country_flag {
     flex-grow: 2;
     background-image: url(../gfx/pl.png);
-    height: 55vw;
-    background-size: cover;
-    background-position-x: -10vw;
-    background-position-y: -2vh;
+    height: 90vh;
+    width: 80vw;
+    background-repeat: no-repeat;
+    left:0;
+    bottom:0;
+    position: absolute;
+    background-size: contain;
 }
 
 #data {
@@ -271,4 +276,17 @@ path.cls-15:hover {
 
 path {
     pointer-events: all !important;
+}
+.bg-halftransparent{
+    background-color: rgba(130,130,130,0.4);
+}
+#loader{
+    display:flex;
+    top:0;
+    bottom:0;
+}
+#complete{
+    display:none;
+    top:0;
+    bottom:0;
 }

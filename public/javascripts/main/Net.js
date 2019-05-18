@@ -1,7 +1,7 @@
 class Net {
     constructor() { }
 
-    sendData(country) {
+    sendData(country,fn) {
         var obj
         $.ajax({
             url: "/",
@@ -10,7 +10,7 @@ class Net {
             },
             type: "POST",
             success: function (data) {
-                console.log(JSON.stringify(data))
+                fn(data[0])
             },
             error: function (xhr, status, error) {
                 console.log(xhr);

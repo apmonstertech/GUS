@@ -2,6 +2,7 @@ class Net {
     constructor() { }
 
     sendData(action, fn) {
+        $("#loader").show()
         $.ajax({
             url: "/quiz/starter/",
             data: {
@@ -9,7 +10,7 @@ class Net {
             },
             type: "POST",
             success: function (data) {
-                console.log(data)
+                $("#loader").hide()     
                 fn(data);
             },
             error: function (xhr, status, error) {
