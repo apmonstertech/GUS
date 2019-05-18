@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Quiz = require('../models/quiz');
+var User = require('../models/user');
 
 require('../db/db')
 const mongoose = require('mongoose');
@@ -41,7 +42,14 @@ router.post('/starter', function (req, res, next) {
 });
 
 router.post('/starter/result', function (req, res, next) {
-    console.log(req.body)
+    console.log(req.user.username)
+    // console.log(req.body)
+    // var query = { 'username': req.user.username };
+    // req.newData.username = req.user.username;
+    // MyModel.findOneAndUpdate(query, req.newData, { upsert: true }, function (err, doc) {
+    //     if (err) return res.send(500, { error: err });
+    //     return res.send("succesfully saved");
+    // });
 });
 
 

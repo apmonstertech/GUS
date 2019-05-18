@@ -10,7 +10,7 @@ class Net {
             },
             type: "POST",
             success: function (data) {
-                $("#loader").hide()     
+                $("#loader").hide()
                 fn(data);
             },
             error: function (xhr, status, error) {
@@ -19,12 +19,12 @@ class Net {
         });
     }
 
-    sendScore(action,score){
+    sendScore(score, lenght) {
         $.ajax({
             url: "/quiz/starter/result",
             data: {
-                action: action,
-                score: score
+                score: score,
+                lenght: lenght
             },
             type: "POST",
             error: function (xhr, status, error) {

@@ -25,7 +25,8 @@ $(document).ready(function () {
         }, false);
     });
 
-    $(".login").submit(function () {
+    $(".login").click(function (e) {
+        e.preventDefault()
         var obj = {
             username: $('#username').val(),
             password: $('#password').val(),

@@ -4,56 +4,53 @@ $(document).ready(function () {
     var questions;
     var counter = 0;
     net = new Net() // utworzenie obiektu klasy Net
-    
-    function getData(obj){
+
+    function getData(obj) {
         questions = obj;
-        getQuestion(obj,counter)
+        getQuestion(obj, counter)
     }
-    function getQuestion(obj,count){
+    function getQuestion(obj, count) {
         var question = obj[count];
         $("#quiz-que").html(question.question);
-        $("#quiz-count").html((count+1) + "/" + obj.length);
+        $("#quiz-count").html((count + 1) + "/" + obj.length);
         $("#quiz-left").html("&#8734;");
         $("#quiz-a").html(question.ans1);
         $("#quiz-b").html(question.ans2);
         $("#quiz-c").html(question.ans3);
         $("#quiz-d").html(question.ans4);
     }
-    function end(){
+    function end() {
         $("#complete").addClass("d-flex");
-        $("#points").html(right + " / " + questions.length )
-        net.sendScore({
-            right: right,
-            length: questions.length
-        })
-        setTimeout(function(){
+        $("#points").html(right + " / " + questions.length)
+        net.sendScore(right, questions.length)
+        setTimeout(function () {
             window.location.href = "/quiz";
-        },1500)
+        }, 1500)
     }
-    $(".ans").click(function(e){
+    $(".ans").click(function (e) {
         var anss = $(".ans")
-        for(var x = 0; x < anss.length; x++){
+        for (var x = 0; x < anss.length; x++) {
             var element = anss[x];
             element.style.backgroundColor = "#ff0000";
             if (element.attributes.answear.value == questions[counter].ansRight) element.style.backgroundColor = "#00ff00";
         }
-        if(e.target.attributes.answear.value == questions[counter].ansRight){
+        if (e.target.attributes.answear.value == questions[counter].ansRight) {
             right++;
         }
         counter++
-        setTimeout(function(){
-            for(var x = 0; x < anss.length; x++){
+        setTimeout(function () {
+            for (var x = 0; x < anss.length; x++) {
                 var element = anss[x];
                 element.style.backgroundColor = "";
             }
-            if(counter == questions.length){
+            if (counter == questions.length) {
                 end()
             } else {
-                getQuestion(questions,counter)
+                getQuestion(questions, counter)
             }
-        },2000)
-        
+        }, 2000)
+
     })
-    net.sendData("CLICK",getData);
-    
+    net.sendData("CLICK", getData);
+
 })

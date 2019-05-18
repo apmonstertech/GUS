@@ -39,24 +39,25 @@ router.get('/login', function (req, res, next) {
 
 // router.post('/login/ajax', passport.authenticate('local-login'));
 
-router.post('/login', function (req, res, next) {
-  console.log(req.body)
+// router.post('/login', function (req, res, next) {
+//   console.log(req.body)
+//   passport.authenticate('local',
+//     { failureRedirect: '/', failureFlash: true }),
+//     function (err, user, info) {
+
+//       console.log("PASUJE")
+
+//     }
+// });
+
+router.post('/login',
   passport.authenticate('local',
     { failureRedirect: '/', failureFlash: true }),
-    function (err, user, info) {
-      if (err) {
-        return next(err);
-      }
-      // if user is not found due to wrong username or password
-      if (!user) {
-        //return res.render('login', {});
-        res.json({ detail: info });
-      }//(!user)
-      //passport.js has a logIn user method
-      console.log("PASUJE")
+  function (req, res) {
+    // req.flash('info', 'You are now logged in')	    // req.flash('info', 'You are now logged in')
+    res.redirect('/')
 
-    }
-});
+  });
 
 // router.post('/login', function (req, res) {
 //   console.log(req)
@@ -90,8 +91,6 @@ router.post('/login', function (req, res, next) {
 //   })(req, res);
 // });
 
-
-
 passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
@@ -103,11 +102,7 @@ passport.deserializeUser(function (id, done) {
 });
 
 
-passport.use('local', new LocalStrategy({
-  usernameField: 'username',
-  passwordField: 'password',
-  passReqToCallback: true
-}, function (username, password, done) {
+passport.use('local', new LocalStrategy(function (username, password, done) {
   console.log(username)
   User.getUserByUsername(username, function (err, user) {
     if (err) throw err;
@@ -174,8 +169,6 @@ router.post('/register', function (req, res, next) {
       console.log(user)
       if (user) {
         console.log("USER EXISTS")
-        // res.redirect('/users/register');
-
       } else {
         User.createUser(newUser, function (err, user) {
           if (err) throw err;
@@ -191,7 +184,7 @@ router.post('/register', function (req, res, next) {
 
 router.get('/logout', function (req, res) {
   req.logout();
-  res.redirect('/users/login')
+  res.redirect('/')
 })
 
 router.get('/profile', function (req, res) {
