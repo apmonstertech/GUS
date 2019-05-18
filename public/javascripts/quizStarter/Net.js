@@ -19,12 +19,11 @@ class Net {
         });
     }
 
-    sendScore(score, lenght) {
+    sendScore(score) {
         $.ajax({
             url: "/quiz/starter/result",
             data: {
-                score: score,
-                lenght: lenght
+                score: score
             },
             type: "POST",
             error: function (xhr, status, error) {

@@ -22,7 +22,9 @@ $(document).ready(function () {
     function end() {
         $("#complete").addClass("d-flex");
         $("#points").html(right + " / " + questions.length)
-        net.sendScore(right, questions.length)
+        net.sendScore(
+            right
+        )
         setTimeout(function () {
             window.location.href = "/quiz";
         }, 1500)

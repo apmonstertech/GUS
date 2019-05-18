@@ -124,6 +124,7 @@ passport.use('local', new LocalStrategy(function (username, password, done) {
 router.post('/register', function (req, res, next) {
   var username = req.body.username;
   var email = req.body.email;
+  var age = req.body.age;
   var password = req.body.password;
 
   var elo = username.toLowerCase()
@@ -140,6 +141,7 @@ router.post('/register', function (req, res, next) {
   req.checkBody('email', 'Email field is required').notEmpty()
   req.checkBody('email', 'It is not an email').isEmail()
   req.checkBody('password', 'Password field is required').notEmpty()
+  req.checkBody('age', 'Age field is required').notEmpty()
   req.checkBody('passwordAgain', 'Passwords do not match').equals(req.body.password);
 
   var errors = req.validationErrors();
@@ -151,6 +153,7 @@ router.post('/register', function (req, res, next) {
     var newUser = new User({
       username: username,
       email: email,
+      age: age,
       password: password,
       scoreQuiz: 0,
       scoreTraining: 0,
@@ -181,7 +184,12 @@ router.get('/logout', function (req, res) {
 })
 
 router.get('/profile', function (req, res) {
-
+  if (req.isAuthenticated()) {
+    res.render('profile', { "user": req.user })
+    console.log(req.user.username)
+  } else {
+    res.redirect('/users/login')
+  }
 })
 
 
