@@ -22,7 +22,10 @@ $(document).ready(function () {
     function end(){
         $("#complete").addClass("d-flex");
         $("#points").html(right + " / " + questions.length )
-        // tutaj save do bazy
+        net.sendScore({
+            right: right,
+            length: questions.length
+        })
         setTimeout(function(){
             window.location.href = "/quiz";
         },1500)

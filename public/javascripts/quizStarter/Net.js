@@ -17,6 +17,19 @@ class Net {
                 console.log(xhr);
             }
         });
+    }
 
+    sendScore(action,score){
+        $.ajax({
+            url: "/quiz/starter/result",
+            data: {
+                action: action,
+                score: score
+            },
+            type: "POST",
+            error: function (xhr, status, error) {
+                console.log(xhr);
+            }
+        });
     }
 }
