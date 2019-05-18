@@ -28,7 +28,7 @@ $(".cls-15").click(function (e) {
 
         }
     }, 1)
-    $("#country_flag")[0].style.backgroundImage = "url(/gfx/flags" + e.target.id.toLowerCase()+".png)";
+    $("#country_flag")[0].style.backgroundImage = "url(/gfx/flags/" + e.target.id.toLowerCase()+".png)";
 
 
 })
