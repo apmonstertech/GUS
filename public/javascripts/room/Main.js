@@ -22,7 +22,6 @@ $(document).ready(function () {
     var wall1 = new THREE.Mesh(wall1Geo,wall1Mat)
     wall1.position.set(-100,0,200)
     scene.add(wall1)
-    wall1.name="trophy"
     var wall2 = wall1.clone();
     wall2.position.z = -200
     wall2.name="map"
@@ -47,6 +46,7 @@ $(document).ready(function () {
     wall6.position.set(140,0,-140)
     scene.add(wall6)
     wall6.lookAt(new THREE.Vector3(0,0,0));
+    wall1.name="trophy"
     var lookPoint = new THREE.Mesh();
     lookPoint.position.x = 100
     lookPoint.position.y = 50
@@ -62,6 +62,15 @@ $(document).ready(function () {
         }
         if(e.key == "d" || e.key == "D"){
             $("#r").click()
+        }
+        if(e.key == "w" || e.key == "W"){
+            if(counter == -1){
+                window.location.href = "/map";
+            } else if (counter == 0) {
+                window.location.href = "/quiz";
+            } else {
+                window.location.href = "/trophy";
+            }
         }
     })
     $("#l").click(function(){
@@ -88,7 +97,7 @@ $(document).ready(function () {
             counter-=1
         }
     })
-    $(document).mousedown(function (event) {
+    $("#root").mousedown(function (event) {
         var raycaster = new THREE.Raycaster(); // obiekt symulujący "rzucanie" promieni
         var mouseVector = new THREE.Vector2() // ten wektor czyli pozycja w przestrzeni 2D na ekranie(x,y) wykorzystany będzie do określenie pozycji myszy na ekranie a potem przeliczenia na pozycje 3D
         mouseVector.x = (event.clientX / $(window).width()) * 2 - 1;
@@ -103,7 +112,7 @@ $(document).ready(function () {
         }
     })
     function render() {
-        var windowHeight = $(window).height()
+        var windowHeight = $(window).height() - $("header").height()
         var windowWidth = $(window).width()
         renderer.setSize(windowWidth, windowHeight);
         if(Math.floor(lookPoint.position.clone().distanceTo(point)) >1){
