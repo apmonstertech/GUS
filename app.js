@@ -23,6 +23,7 @@ var roomRouter = require('./routes/room');
 var lobbyRouter = require('./routes/lobby');
 var rankingRouter = require('./routes/ranking');
 var profileRouter = require('./routes/profile');
+var mapRouter = require('./routes/map');
 
 var app = express();
 
@@ -99,6 +100,8 @@ app.use('/room', roomRouter);
 app.use('/lobby', lobbyRouter);
 app.use('/ranking', rankingRouter);
 app.use('/profile', profileRouter);
+app.use('/map', mapRouter);
+
 
 app.get('*', function (req, res, next) {
   console.log(req.user)
