@@ -5,19 +5,16 @@ var LocalStrategy = require('passport-local').Strategy;
 const jwt = require('jsonwebtoken')
 var User = require('../models/user');
 const blackList = ['chuj', 'kurwa', 'kutas', 'pizda', 'cipa', 'ciota', 'kutasiarz', 'skurwiel', 'skurwysyn', 'debil', 'dzban', 'stary', 'stara', 'wazon', 'wale', 'wiadro', 'frajer', 'qtas', 'qrwa', 'jabany', 'jebać', 'wykurw']
-var usernameLogin, passwordLogin
+
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
 
-router.post('/', function (req, res, next) {
-  console.log(req.body)
-  usernameLogin = req.body.username
-  passwordLogin = req.body.password
-  console.log(usernameLogin, passwordLogin)
+router.get('/register', function (req, res, next) {
+  console.log('register')
+  res.render('register', { title: "Register Page" })
 });
-
 
 router.get('/login', function (req, res, next) {
   // req.flash('error', 'You are now logged in')
@@ -37,11 +34,9 @@ router.get('/login', function (req, res, next) {
 
 });
 
-// router.post('/login/ajax', passport.authenticate('local-login'));
-
 router.post('/login',
   passport.authenticate('local',
-    { failureRedirect: '/', failureFlash: true }),
+    { failureRedirect: '/users/login', failureFlash: true }),
   function (req, res) {
     // req.flash('info', 'You are now logged in')
     res.redirect('/')
@@ -59,36 +54,42 @@ passport.deserializeUser(function (id, done) {
   });
 });
 
-router.post('/login/check', function (req, res, next) {
-  console.log(req.body)
-  passport.use(new LocalStrategy(function (username, password, done) {
-    console.log(username)
-    User.getUserByUsername(username, function (err, user) {
-      if (err) throw err;
-      if (!user) {
-        return done(null, false, { message: 'Unknow User' })
-      }
-      User.comparePassword(password, user.password, function (err, isMatch) {
-        if (err) throw done(err);
-        if (isMatch) {
-          console.log(user)
-          return done(null, user)
-        } else {
-          return done(null, false, { message: 'Invalid Password' })
-        }
-      })
-    })
 
-  }))
-})
+passport.use(new LocalStrategy(function (username, password, done) {
+  User.getUserByUsername(username, function (err, user) {
+    if (err) throw err;
+    if (!user) {
+      return done(null, false, { message: 'Unknow User' })
+    }
+    User.comparePassword(password, user.password, function (err, isMatch) {
+      if (err) throw done(err);
+      if (isMatch) {
+        console.log(user)
+        // const token = jwt.sign(
+        //   {
+        //     email: user.email,
+        //     userId: user._id
+        //   },
+        //   'secret',
+        //   {
+        //     expiresIn: '1h'
+        //   }
+        // )
+        // console.log(token)
+        return done(null, user)
+      } else {
+        return done(null, false, { message: 'Invalid Password' })
+      }
+    })
+  })
+
+}))
 
 
 router.post('/register', function (req, res, next) {
-  console.log(req.body)
   var username = req.body.username;
   var email = req.body.email;
   var password = req.body.password;
-  var age = req.body.age;
 
   var elo = username.toLowerCase()
   console.log(elo)
@@ -104,7 +105,6 @@ router.post('/register', function (req, res, next) {
   req.checkBody('email', 'Email field is required').notEmpty()
   req.checkBody('email', 'It is not an email').isEmail()
   req.checkBody('password', 'Password field is required').notEmpty()
-  req.checkBody('age', 'Age field is required').notEmpty()
   req.checkBody('passwordAgain', 'Passwords do not match').equals(req.body.password);
 
   var errors = req.validationErrors();
@@ -117,7 +117,6 @@ router.post('/register', function (req, res, next) {
       username: username,
       email: email,
       password: password,
-      age: age,
       scoreQuiz: 0,
       scoreTraining: 0,
       scoreRivalry: 0
@@ -128,8 +127,7 @@ router.post('/register', function (req, res, next) {
       console.log(user)
       if (user) {
         console.log("USER EXISTS")
-        // res.redirect('/users/register');
-
+        res.redirect('/users/register');
       } else {
         User.createUser(newUser, function (err, user) {
           if (err) throw err;

@@ -1,4 +1,4 @@
-<div id="info" class='full-height position-absolute text-center d-none d-lg-block'>
+<div id="info" class='full-height position-absolute text-center'>
     <div class="position-relative h-100">
         <button id="up" class="btn">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -46,14 +46,14 @@
             <div class="modal-body">
                 <form action="/users/login" method="POST">
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-input" id="usernameLogin" aria-describedby="usernameHelp" placeholder="Wprowadź swoją nazwę użytkownika">
-                        <label for="usernameLogin" class="form-control-title">NAZWA UŻYTKOWNIKA</label>
+                        <input type="text" class="form-control form-control-input" id="nick" aria-describedby="nickHelp" placeholder="Wprowadź swoją nazwę użytkownika">
+                        <label for="nick" class="form-control-title">NAZWA UŻYTKOWNIKA</label>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control form-control-input" id="passwordLogin" placeholder="Wprowadź swoje hasło">
-                        <label for="passwordLogin" class="form-control-title">HASŁo</label>
+                        <input type="password" class="form-control form-control-input" id="exampleInputPassword1" placeholder="Wprowadź swoje hasło">
+                        <label for="exampleInputPassword1" class="form-control-title">HASŁo</label>
                     </div>
-                    <button type="submit" class="btn btn-control login">Zaloguj</button>
+                    <button type="submit" class="btn btn-control">Zaloguj</button>
                 </form>
             </div>
         </div>
@@ -72,28 +72,25 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="needs-validation" novalidate>
+                <form action="/users/login" method="POST">
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-input" id="username" aria-describedby="nickHelp" placeholder="Wprowadź swoją nazwę użytkownika"
-                            required>
+                        <input type="text" class="form-control form-control-input" id="nick" aria-describedby="nickHelp" placeholder="Wprowadź swoją nazwę użytkownika">
                         <label for="nick" class="form-control-title">NAZWA UŻYTKOWNIKA</label>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control form-control-input" id="password" placeholder="Wprowadź swoje hasło" required>
-                        <label for="password" class="form-control-title">HASŁO</label>
+                        <input type="password" class="form-control form-control-input" id="exampleInputPassword1" placeholder="Wprowadź swoje hasło">
+                        <label for="exampleInputPassword1" class="form-control-title">HASŁO</label>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control form-control-input" id="passwordConfirm" placeholder="Potwierdź hasło" required>
-                        <label for="passwordConfirm" class="form-control-title">POTWIERDŹ HASŁO</label>
+                        <input type="password" class="form-control form-control-input" id="exampleInputPassword1" placeholder="Potwierdź hasło">
+                        <label for="exampleInputPassword1" class="form-control-title">POTWIERDŹ HASŁO</label>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control form-control-input" id="email" aria-describedby="emailHelp" placeholder="Wprowadź swój adres e-mail"
-                            required>
+                        <input type="email" class="form-control form-control-input" id="email" aria-describedby="emailHelp" placeholder="Wprowadź swój adres e-mail">
                         <label for="email" class="form-control-title">E-MAIL</label>
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control form-control-input" id="age" aria-describedby="ageHelp" placeholder="Wprowadź swój wiek           14"
-                            required>
+                        <input type="number" class="form-control form-control-input" id="age" aria-describedby="ageHelp" placeholder="Wprowadź swój wiek           14">
                         <label for="age" class="form-control-title">WIEK</label>
                     </div>
                     <div class="form-group">
@@ -107,41 +104,26 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-control register">Zarejestruj się</button>
-                    <button class="btn btn-control-login">Masz już konto?<span class="btn-title-loginup"> Zaloguj się
+                    <button type="submit" class="btn btn-control">Zarejestruj się</button>
+                    <button type="submit" class="btn btn-control-login">Masz już konto?<span class="btn-title-loginup"> Zaloguj
+                            się
                         </span></button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 {{!--
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict';
-        window.addEventListener('load', function () {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
-</script> --}}
-
-<script>
-    $.getScript("/javascripts/forms/NetForm.js", function () {
-        var imported = document.createElement('script');
-        imported.src = "/javascripts/forms/MainForm.js"
-        document.head.appendChild(imported);
-    });
-</script>
+<form action="/users/login" method="POST" autocomplete="off">
+    <div class=" form-group ">
+        <label for=" ">Username</label>
+        <input type="text " class="form-control" name="username">
+    </div>
+    <div class="form-row">
+        <label for=" ">Password</label>
+        <input type="text" class="form-control" name="password">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info"><i class="fa fa-database "></i> Submit</button>
+    </div>
+</form> --}}
