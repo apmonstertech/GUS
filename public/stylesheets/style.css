@@ -272,6 +272,7 @@ body {
 
 path.cls-15:hover {
     fill: #ff0 !important;
+    cursor: pointer;
 }
 
 path {
