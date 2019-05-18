@@ -22,6 +22,7 @@ var quizRouter = require('./routes/quiz');
 var roomRouter = require('./routes/room');
 var lobbyRouter = require('./routes/lobby');
 var rankingRouter = require('./routes/ranking');
+var profileRouter = require('./routes/profile');
 
 var app = express();
 
@@ -97,6 +98,7 @@ app.use('/quiz', quizRouter);
 app.use('/room', roomRouter);
 app.use('/lobby', lobbyRouter);
 app.use('/ranking', rankingRouter);
+app.use('/profile', profileRouter);
 
 app.get('*', function (req, res, next) {
   console.log(req.user)

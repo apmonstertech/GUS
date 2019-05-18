@@ -1,18 +1,58 @@
-<div class="h-100 container">
-    <div class="row">
-        <h1>Mój profil</h1>
-        <div class="d-flex m-auto w-50 justify-content-between">
-            <span id="starter">Ilośc punktów w trybie treningowym:</span>
-            <span id="starter_value">0</span>
+<div class="container">
+    <h1>Mój profil</h1>
+    <div class="d-flex justify-content-between">
+        <div class="d-flex col-5 flex-column">
+            <div class="d-flex justify-content-between">
+                <span id="nick">Nick:</span>
+                <span id="nick_value">{{username}}</span>
+            </div>
+            <div class="d-flex justify-content-between">
+                <span id="mail">Email:</span>
+                <span id="email_value">{{email}}</span>
+            </div>
+            <div class="d-flex justify-content-between">
+                <span id="age">Wiek:</span>
+                <span id="age_value">{{age}}</span>
+            </div>
+            <div class="d-flex justify-content-between">
+                <span id="place">Miejsce w rankingu:</span>
+                <span id="place_value">1</span>
+            </div>
         </div>
-        <div class="d-flex m-auto w-50 justify-content-between">
-            <span id="ranked">Ilośc punktów w trybie rankingowym:</span>
-            <span id="ranked_value">0</span>
-        </div>
-        <div class="d-flex m-auto w-50 justify-content-between">
-            <span id="rivals">Ilośc punktów w trybie rywalizacji:</span>
-            <span id="rivals_value">0</span>
+        <div class="d-flex col-5 flex-column">
+            <div class="d-flex justify-content-between">
+                <span id="starter">Ilośc punktów w trybie treningowym:</span>
+                <span id="starter_value">{{scoreTraining}}</span>
+            </div>
+            <div class="d-flex justify-content-between">
+                <span id="ranked">Ilośc punktów w trybie rankingowym:</span>
+                <span id="ranked_value">{{scoreQuiz}}</span>
+            </div>
+            <div class="d-flex justify-content-between">
+                <span id="rivals">Ilośc punktów w trybie rywalizacji:</span>
+                <span id="rivals_value">{{scoreRivalry}}</span>
+            </div>
         </div>
     </div>
-
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nick</th>
+        <th scope="col">Wiek</th>
+        <th scope="col">Wynik</th>
+        </tr>
+    </thead>
+    <tbody id="import">
+    </tbody>
+    </table>
 </div>
+
+<script>
+    $.getScript("/javascripts/profile/Net.js", function()
+    {
+        var imported = document.createElement('script');
+        imported.src = "/javascripts/profile/Main.js"
+        document.head.appendChild(imported);
+    });
+</script>
