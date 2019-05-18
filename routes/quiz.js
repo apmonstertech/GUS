@@ -37,7 +37,11 @@ router.post('/starter', function (req, res, next) {
             res.send(results)
         }
     });
-    
+
+});
+
+router.post('/starter/result', function (req, res, next) {
+    console.log(req.body)
 });
 
 

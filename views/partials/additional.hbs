@@ -43,16 +43,16 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/users/login" method="POST">
+                <form novalidate>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-input" id="usernameLogin" aria-describedby="usernameHelp" placeholder="Wprowadź swoją nazwę użytkownika">
+                        <input type="text" class="form-control form-control-input" id="username" aria-describedby="usernameHelp" placeholder="Wprowadź swoją nazwę użytkownika">
                         <label for="usernameLogin" class="form-control-title">NAZWA UŻYTKOWNIKA</label>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control form-control-input" id="passwordLogin" placeholder="Wprowadź swoje hasło">
+                        <input type="password" class="form-control form-control-input" id="password" placeholder="Wprowadź swoje hasło">
                         <label for="passwordLogin" class="form-control-title">HASŁo</label>
                     </div>
-                    <button type="submit" class="btn btn-control login">Zaloguj</button>
+                    <button class="btn btn-control login">Zaloguj</button>
                 </form>
             </div>
         </div>
@@ -73,12 +73,12 @@
             <div class="modal-body">
                 <form class="needs-validation" novalidate>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-input" id="username" aria-describedby="nickHelp" placeholder="Wprowadź swoją nazwę użytkownika"
+                        <input type="text" class="form-control form-control-input" id="usernameReq" aria-describedby="nickHelp" placeholder="Wprowadź swoją nazwę użytkownika"
                             required>
                         <label for="nick" class="form-control-title">NAZWA UŻYTKOWNIKA</label>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control form-control-input" id="password" placeholder="Wprowadź swoje hasło" required>
+                        <input type="password" class="form-control form-control-input" id="passwordReq" placeholder="Wprowadź swoje hasło" required>
                         <label for="password" class="form-control-title">HASŁO</label>
                     </div>
                     <div class="form-group">

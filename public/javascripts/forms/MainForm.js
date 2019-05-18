@@ -14,9 +14,9 @@ $(document).ready(function () {
             }
             form.classList.add('was-validated');
             var obj = {
-                username: $('#username').val(),
+                username: $('#usernameReq').val(),
                 email: $('#email').val(),
-                password: $('#password').val(),
+                password: $('#passwordReq').val(),
                 passwordConfirm: $('#passwordConfirm').val(),
                 age: $('#age').val(),
             }
@@ -25,10 +25,10 @@ $(document).ready(function () {
         }, false);
     });
 
-    $(".login").on("submit", function () {
+    $(".login").submit(function () {
         var obj = {
-            username: $('#usernameLogin').val(),
-            password: $('#passwordLogin').val(),
+            username: $('#username').val(),
+            password: $('#password').val(),
         }
         netForm.sendDataLogin(obj.username, obj.password)
     })
