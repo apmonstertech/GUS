@@ -16,6 +16,9 @@ var UserSchema = mongoose.Schema({
     password: {
         type: String
     },
+    age: {
+        type: String
+    },
     scoreQuiz: {
         type: Number
     },
