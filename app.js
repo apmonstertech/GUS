@@ -21,6 +21,7 @@ var usersRouter = require('./routes/users');
 var quizRouter = require('./routes/quiz');
 var roomRouter = require('./routes/room');
 var lobbyRouter = require('./routes/lobby');
+var rankingRouter = require('./routes/ranking');
 
 var app = express();
 
@@ -95,6 +96,7 @@ app.use('/users', usersRouter);
 app.use('/quiz', quizRouter);
 app.use('/room', roomRouter);
 app.use('/lobby', lobbyRouter);
+app.use('/ranking', rankingRouter);
 
 app.get('*', function (req, res, next) {
   console.log(req.user)
