@@ -17,24 +17,24 @@ router.get('/', function (req, res, next) {
     req.session.page_views = 1;
   }
   if (req.isAuthenticated()) {
-    res.render('index', { "name": req.user.username })
+    res.render('index', { "user": req.user })
     console.log(req.user.username)
   } else {
     res.render('index')
   }
 });
 
-router.post("/", function(req, res, next){
+router.post("/", function (req, res, next) {
   console.log(req.body.country)
   var country = req.body.country
-  Countries.find({code:country},function(err, dosc){
-    if(!err){
-        console.log(dosc)
-        res.send(dosc)
-    }else{
+  Countries.find({ code: country }, function (err, dosc) {
+    if (!err) {
+      console.log(dosc)
+      res.send(dosc)
+    } else {
       console.log("ERROR in counry")
     }
-})
+  })
 })
 
 

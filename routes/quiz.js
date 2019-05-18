@@ -10,7 +10,7 @@ var setUp = []
 
 router.get('/', function (req, res, next) {
     if (req.isAuthenticated()) {
-        res.render('panel', { "name": req.user.username })
+        res.render('panel', { "user": req.user })
         console.log(req.user.username)
     } else {
         res.render('panel');
@@ -23,7 +23,7 @@ router.post('/', function (req, res, next) {
 
 router.get('/starter', function (req, res, next) {
     if (req.isAuthenticated()) {
-        res.render('quizStarter', { "name": req.user.username })
+        res.render('quizStarter', { "user": req.user })
         console.log(req.user.username)
     } else {
         res.render('quizStarter')

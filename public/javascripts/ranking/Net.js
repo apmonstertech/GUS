@@ -6,6 +6,7 @@ class Net {
             url: "/ranking/starter",
             type: "POST",
             success: function (data) {
+                console.log(data)
                 fn(data)
             },
             error: function (xhr, status, error) {

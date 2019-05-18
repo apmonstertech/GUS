@@ -3,7 +3,7 @@ var router = express.Router();
 
 router.get('/user', function (req, res, next) {
     if (req.isAuthenticated()) {
-        res.render("room", { "name": req.user.username })
+        res.render("room", { "user": req.user })
     } else {
         res.redirect('/lobby/')
     }
