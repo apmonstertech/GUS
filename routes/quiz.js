@@ -31,7 +31,7 @@ router.get('/starter', function (req, res, next) {
 });
 
 router.post('/starter', function (req, res, next) {
-    Quiz.findRandom({}, {}, { limit: 3 }, function (err, results) {
+    Quiz.findRandom({}, {}, { limit: 1 }, function (err, results) {
         if (!err) {
             console.log(results);
             setUp = results
@@ -42,20 +42,20 @@ router.post('/starter', function (req, res, next) {
 });
 
 router.post('/starter/result', function (req, res, next) {
-    console.log(req.user.username)
-    // console.log(req.body)
-    // var query = { 'username': req.user.username };
-    // req.newData.username = req.user.username;
-    // MyModel.findOneAndUpdate(query, req.newData, { upsert: true }, function (err, doc) {
-    //     if (err) return res.send(500, { error: err });
-    //     return res.send("succesfully saved");
-    // });
+    console.log(req.body)
+    var score = parseInt(req.body.score) * 5
+    if (req.user) {
+        User.findOne({ username: req.user.username }, function (error, docs) {
+            docs.scoreTraining = (docs.scoreTraining + score)
+            console.log(docs);
+            docs.save()
+        });
+    }
 });
 
 
 router.get('/ranked', function (req, res, next) {
     res.render('quizRanked');
-
 });
 router.get('/rivalry', function (req, res, next) {
     res.render('quizRivalry');
