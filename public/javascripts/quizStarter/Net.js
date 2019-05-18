@@ -1,8 +1,7 @@
 class Net {
     constructor() { }
 
-    sendData(action) {
-        var obj
+    sendData(action, fn) {
         $.ajax({
             url: "/quiz/starter/",
             data: {
@@ -10,7 +9,8 @@ class Net {
             },
             type: "POST",
             success: function (data) {
-                console.log(JSON.stringify(data))
+                console.log(data)
+                fn(data);
             },
             error: function (xhr, status, error) {
                 console.log(xhr);
