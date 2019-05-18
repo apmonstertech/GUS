@@ -1,37 +1,37 @@
 <div class="container my-auto">
     <div class="row d-flex justify-content-center flex-wrap">
-        <button onclick="window.location.href = '/quiz/starter'" class="btn wrap-it mx-4 bg-transparent">
-        <div class="insider">
-            <div class="btn-success card ">
-                <div class="card-header">
-                    <h3>Tryb nauki</h3>
+        <div class="wrap-it mx-4 bg-transparent">
+            <button onclick="window.location.href = '/quiz/starter'" class="insider btn p-0">
+                <div class="btn-success card">
+                    <div class="card-header">
+                        <h3>Tryb nauki</h3>
+                    </div>
+                    <div class="card-img-center"><img class="card-img" src="/gfx/starter.png" alt=""></div>
+                    <div class="card-body">
+                        <p class="mb-1">Rozpocznij tryb nauki,</p>
+                        <p class="mb-1">przetestuj swoją wiedzę przed rozgrywką rankingową.</p>
+                    </div>
                 </div>
-                <div class="card-img-center"><img class="card-img" src="/gfx/starter.png" alt=""></div>
-                <div class="card-body">
-                    <p class="mb-1">Rozpocznij tryb nauki,</p>
-                    <p class="mb-1">przetestuj swoją wiedzę przed rozgrywką rankingową.</p>
+            </button>
+        </div>
+        <div class="mx-4 wrap-it bg-transparent">
+            <button onclick="window.location.href = '/quiz/ranked'" class="insider btn p-0">
+                <div class="btn-success card">
+                    <div class="card-header">
+                        <h3>
+                            Tryb rankingowy
+                        </h3>
+                    </div>
+                    <div class="card-img-center"><img class="card-img" src="/gfx/ranked.png" alt=""></div>
+                    <div class="card-body">
+                        <p class="mb-1">Rozpocznij tryb rankingowy,</p>
+                        <p class="mb-1">zdobywaj punkty  konkuruj z innymi graczami.</p>
+                    </div>
                 </div>
-            </div>
-            </div>
-        </button>
-        <button onclick="window.location.href = '/quiz/ranked'"  class="btn mx-4 wrap-it bg-transparent">
-        <div class="insider">
-            <div class="btn-success card">
-                <div class="card-header">
-                    <h3>
-                        Tryb rankingowy
-                    </h3>
-                </div>
-                <div class="card-img-center"><img class="card-img" src="/gfx/ranked.png" alt=""></div>
-                <div class="card-body">
-                    <p class="mb-1">Rozpocznij tryb rankingowy,</p>
-                    <p class="mb-1">zdobywaj punkty  konkuruj z innymi graczami.</p>
-                </div>
-            </div>
-            </div>
-        </button>
-        <button  onclick="window.location.href = '/quiz/rivalry'" class="btn mx-4 wrap-it bg-transparent">
-            <div class="insider">
+            </button>
+        </div>
+        <div class="mx-4 wrap-it bg-transparent">
+            <button onclick="window.location.href = '/quiz/rivalry'" class="btn insider p-0">
                 <div class="story" id="s0">
                     <div class="btn-success card">
                         <div class="card-header">Tryb rywalizacji</div>
@@ -42,8 +42,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </button>
+            </button>
+        </div>
        
         {{!-- <button onclick="window.location.href = '/quiz/rivalry'" class="btn btn-success mx-4">
             <div class="card b-transparent">
