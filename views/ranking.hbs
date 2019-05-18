@@ -1,0 +1,23 @@
+<button id="starter" class="btn btn-success"></button>
+<button id="ranked" class="btn btn-warning"></button>
+<button id="rivalry" class="btn btn-danger"></button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nick</th>
+      <th scope="col">Wiek</th>
+      <th scope="col">Wynik</th>
+    </tr>
+  </thead>
+  <tbody id="import">
+  </tbody>
+</table>
+<script>
+    $.getScript("/javascripts/quizStarter/Net.js", function()
+    {
+        var imported = document.createElement('script');
+        imported.src = "/javascripts/quizStarter/Main.js"
+        document.head.appendChild(imported);
+    });
+</script>

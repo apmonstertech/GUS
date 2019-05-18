@@ -5,19 +5,16 @@ var LocalStrategy = require('passport-local').Strategy;
 const jwt = require('jsonwebtoken')
 var User = require('../models/user');
 const blackList = ['chuj', 'kurwa', 'kutas', 'pizda', 'cipa', 'ciota', 'kutasiarz', 'skurwiel', 'skurwysyn', 'debil', 'dzban', 'stary', 'stara', 'wazon', 'wale', 'wiadro', 'frajer', 'qtas', 'qrwa', 'jabany', 'jebać', 'wykurw']
-var usernameLogin, passwordLogin
+
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
 
-router.post('/', function (req, res, next) {
-  console.log(req.body)
-  usernameLogin = req.body.username
-  passwordLogin = req.body.password
-  console.log(usernameLogin, passwordLogin)
+router.get('/register', function (req, res, next) {
+  console.log('register')
+  res.render('register', { title: "Register Page" })
 });
-
 
 router.get('/login', function (req, res, next) {
   // req.flash('error', 'You are now logged in')
@@ -52,7 +49,7 @@ router.get('/login', function (req, res, next) {
 
 router.post('/login',
   passport.authenticate('local',
-    { failureRedirect: '/', failureFlash: true }),
+    { failureRedirect: '/users/login', failureFlash: true }),
   function (req, res) {
     // req.flash('info', 'You are now logged in')	    // req.flash('info', 'You are now logged in')
     res.redirect('/')
@@ -125,11 +122,9 @@ passport.use('local', new LocalStrategy(function (username, password, done) {
 
 
 router.post('/register', function (req, res, next) {
-  console.log(req.body)
   var username = req.body.username;
   var email = req.body.email;
   var password = req.body.password;
-  var age = req.body.age;
 
   var elo = username.toLowerCase()
   console.log(elo)
@@ -145,7 +140,6 @@ router.post('/register', function (req, res, next) {
   req.checkBody('email', 'Email field is required').notEmpty()
   req.checkBody('email', 'It is not an email').isEmail()
   req.checkBody('password', 'Password field is required').notEmpty()
-  req.checkBody('age', 'Age field is required').notEmpty()
   req.checkBody('passwordAgain', 'Passwords do not match').equals(req.body.password);
 
   var errors = req.validationErrors();
@@ -158,7 +152,6 @@ router.post('/register', function (req, res, next) {
       username: username,
       email: email,
       password: password,
-      age: age,
       scoreQuiz: 0,
       scoreTraining: 0,
       scoreRivalry: 0
