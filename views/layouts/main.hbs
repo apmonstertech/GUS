@@ -17,9 +17,9 @@
 </head>
 
 <body>
-    <div class="full-height">
+    <div class="full-height d-flex flex-column">
         <header class="bg-success text-right pt-2 pb-2 d-flex justify-content-between align-items-center">
-            <span id="logo" class="ml-5"> Quiz Game Logo </span>
+            <button class="btn ml-5" onclick="window.location.href='/'" id="logo"> Quiz Game Logo </button>
             <div class="mr-5">
                 {{#if message}} {{message}} {{/if}} {{#if name}}
                 <div class="dropdown d-inline-block mr-2">

@@ -6,15 +6,13 @@ $(document).ready(function () {
     net = new Net() // utworzenie obiektu klasy Net
     
     function getData(obj){
-        console.log("elo")
         questions = obj;
         getQuestion(obj,counter)
-
     }
     function getQuestion(obj,count){
         var question = obj[count];
         $("#quiz-que").html(question.question);
-        $("#quiz-count").html(count + "/" + obj.length);
+        $("#quiz-count").html((count+1) + "/" + obj.length);
         $("#quiz-left").html("&#8734;");
         $("#quiz-a").html(question.ans1);
         $("#quiz-b").html(question.ans2);
@@ -22,20 +20,32 @@ $(document).ready(function () {
         $("#quiz-d").html(question.ans4);
     }
     function end(){
-        console.log(right)
+        $("#complete").addClass("d-flex");
+        $("#points").html(right + " / " + questions.length )
+        net.sendScore({
+            right: right,
+            length: questions.length
+        })
+        setTimeout(function(){
+            window.location.href = "/quiz";
+        },1500)
     }
     $(".ans").click(function(e){
         var anss = $(".ans")
-        console.log(questions)
         for(var x = 0; x < anss.length; x++){
-            anss[x].style.backgroundColor = "red!important";
-            if (anss[x].attributes.answear == questions[counter].ansRight) anss[x].style.backgroundColor = "green!important";
+            var element = anss[x];
+            element.style.backgroundColor = "#ff0000";
+            if (element.attributes.answear.value == questions[counter].ansRight) element.style.backgroundColor = "#00ff00";
         }
-        if(e.target.attributes.answear == questions[counter].ansRight){
+        if(e.target.attributes.answear.value == questions[counter].ansRight){
             right++;
         }
         counter++
         setTimeout(function(){
+            for(var x = 0; x < anss.length; x++){
+                var element = anss[x];
+                element.style.backgroundColor = "";
+            }
             if(counter == questions.length){
                 end()
             } else {

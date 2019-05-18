@@ -3,10 +3,16 @@ var net = new Net()
 // $("#log").click(function () {
 //     $(".login-modal").css("display", "block")
 // })
-
+function changeRecords(obj){
+    $("#country_name").html(obj.name);
+    $("#capitol_name").html(obj.capital);
+    $("#people_value").html(obj.population);
+    $("#space_value").html(obj.size);
+    $("#desc").html(obj.description);
+}
 $(".cls-15").click(function (e) {
-    net.sendData(e.target.id)
-    var height = $("body")[0].clientHeight
+    net.sendData(e.target.id,changeRecords)
+    var height = document.body.clientHeight
     var am = 0;
     $("#up").css("opacity", 0)
     var count = 0
@@ -22,12 +28,11 @@ $(".cls-15").click(function (e) {
 
         }
     }, 1)
-    $("#country_name").html(e.target.id)
+    $("#country_flag")[0].style.backgroundImage = "url(/gfx/flags/" + e.target.id.toLowerCase()+".png)";
 
 
 })
 $("#up").click(function () {
-    var height = $("body")[0].clientHeight
     var am = Math.floor(window.scrollY);
     var count = 1
     var inter = setInterval(function () {
