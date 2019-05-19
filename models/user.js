@@ -13,6 +13,9 @@ var UserSchema = mongoose.Schema({
         required: true,
         unique: true,
     },
+    age: {
+        type: Number,
+    },
     password: {
         type: String
     },

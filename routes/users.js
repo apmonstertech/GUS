@@ -79,6 +79,7 @@ passport.use('local', new LocalStrategy(function (username, password, done) {
 
 
 router.post('/register', function (req, res, next) {
+  console.log(req.body)
   var username = req.body.username;
   var email = req.body.email;
   var age = req.body.age;

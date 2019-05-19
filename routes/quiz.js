@@ -57,7 +57,6 @@ router.post('/ranked', function (req, res, next) {
             res.send(results)
         }
     });
-
 });
 
 router.post('/ranked/result', function (req, res, next) {
@@ -68,19 +67,7 @@ router.post('/ranked/result', function (req, res, next) {
             docs.save()
         });
     }
-
 });
-
-router.post('/ranked/result', function (req, res, next) {
-    var score = parseInt(req.body.score) * 5
-    if (req.user) {
-        User.findOne({ username: req.user.username }, function (error, docs) {
-            docs.scoreTraining = (docs.scoreTraining + score)
-            docs.save()
-        });
-    }
-});
-
 
 router.get('/ranked', function (req, res, next) {
     res.render('quizRanked');
