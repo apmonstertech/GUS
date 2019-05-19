@@ -331,12 +331,38 @@ path {
     background-color: #28a745;
 }
 
+.navbar-navs {
+    width: 100%;
+}
+
+.dropdown-item {
+    color: #ffffff !important;
+}
+
+.dropdown-item:hover {
+    color: #eeeeee;
+    background-color: rgba(69, 69, 69, .2);
+}
+
+.dropdown-menu {
+    background-image: url(../gfx/background.png);
+    /* background-size: cover; */
+    background-position-x: 98vw;
+    background-position-y: -31vh;
+    border: none;
+    border-radius: 0;
+}
+
+
+.navbar-toggler-icon {
+    /* background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000…p=%27round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); */
+}
+
 @media (min-width: 768px) {
     .wrap-it {
         top: 10%;
         left: 40%;
         width: 300px;
-
         perspective: 900px;
     }
 
@@ -358,6 +384,49 @@ path {
     }
 }
 
+.navbar-toggler:focus {
+    outline: none;
+}
+
+@media (min-width:992px) {
+    .max-dropdown {
+        display: block;
+    }
+
+    .min-dropdown {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+    .min-dropdown {
+        display: block;
+    }
+
+    .max-dropdown {
+        display: none;
+    }
+
+    .lobby-content {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .lobby-col-guess {
+        max-width: 100% !important;
+        margin: 20px 0;
+        justify-content: center;
+        /* flex: 0; */
+    }
+
+    .lobby-col-guess-btn {}
+
+    .lobby-card {
+        width: 100%;
+    }
+}
 
 
 @keyframes entry {
@@ -385,4 +454,10 @@ path {
     .full-height {
         overflow-y: scroll;
     }
+
+    .card-img {
+        height: 100px;
+        width: auto;
+    }
+
 }

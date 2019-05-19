@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+        crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
@@ -18,38 +20,66 @@
 
 <body>
     <div class="full-height d-flex flex-column">
-        <header class="bg-success text-right pt-2 pb-2 d-flex justify-content-between align-items-center">
-            <span id="logo" class="ml-5"> Quiz Game Logo </span>
-            <div class="mr-5">
-                {{#if message}} {{message}} {{/if}} {{#if user}}
-                <div class="dropdown d-inline-block mr-2">
-                    <button class="btn btn-success dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/gfx/icon.png" class="icon rounded">
-                        <span class="">{{user.username}}</span>
-                    </button>
-                    <div class="dropdown-menu">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="#"><span id="logo"> Quiz Game Logo </span></a>
+            {{#if user}}
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon d-flex justify-content-center align-items-center"> {{user.username}}<i class="fas fa-bars"></i></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav text-right min-dropdown">
+                    <li class="nav-item dropdown ">
                         <a id="my_prof" class="dropdown-item" href="/users/profile">Mój profil</a>
                         <a id="rank" class="dropdown-item" href="/ranking">Ranking</a>
                         <a id="log" class="dropdown-item" href="/users/logout">Wyloguj</a>
-                    </div>
-                </div>
-                {{/if}} {{#unless user}}
-                <div class="dropdown d-inline-block mr-2">
-                    <button class="btn btn-success dropdown-toggle d-flex justify-content-between align-items-center" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/gfx/icon.png" class="icon rounded">
-                        <span class="">GOŚĆ</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a id="rank" class="dropdown-item">Ranking</a>
-                        <a id="log" class="dropdown-item" href="/users/login">Zaloguj</a>
-                        <a id="reg" class="dropdown-item" data-toggle="modal" data-target="#registerModal">Zarejestruj się</a>
-                    </div>
-                </div>
-                {{/unless}}
+                    </li>
+                </ul>
+                <ul class="navbar-nav text-right max-dropdown">
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            {{user.username}}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a id="my_prof" class="dropdown-item" href="/users/profile">Mój profil</a>
+                            <a id="rank" class="dropdown-item" href="/ranking">Ranking</a>
+                            <a id="log" class="dropdown-item" href="/users/logout">Wyloguj</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </header>
+            {{/if}} {{#unless user}} <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon d-flex justify-content-center align-items-center"> Gość <p>&nbsp;</p><i
+                        class="fas fa-bars"></i></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav text-right min-dropdown">
+                    <li class="nav-item dropdown ">
+                        <a id="my_prof" class="dropdown-item" href="/users/profile">Mój profil</a>
+                        <a id="rank" class="dropdown-item" href="/ranking">Ranking</a>
+                        <a id="log" class="dropdown-item" href="/users/logout">Wyloguj</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav text-right max-dropdown">
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Gość
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a id="rank" class="dropdown-item">Ranking</a>
+                            <a id="log" class="dropdown-item" href="/users/login">Zaloguj</a>
+                            <a id="reg" class="dropdown-item" data-toggle="modal" data-target="#registerModal">Zarejestruj
+                                sie</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>{{/unless}}
+        </nav>
         {{{body}}}
     </div>
     {{>additional}}
