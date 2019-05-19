@@ -630,4 +630,5 @@ path {
 #logo>svg {
     width: 100px;
     height: auto;
+    fill: #fff;
 }
