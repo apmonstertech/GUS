@@ -45,7 +45,7 @@ body {
 }
 
 .full-height {
-    height: 100vh;
+    height: 90vh;
 }
 
 #info {
@@ -602,6 +602,7 @@ path {
 #stats {
     background-color: rgba(169, 169, 169, 0.5)
 }
-::-webkit-scrollbar { 
-    display: none; 
+
+::-webkit-scrollbar {
+    display: none;
 }

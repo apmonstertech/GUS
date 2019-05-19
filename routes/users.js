@@ -19,6 +19,7 @@ router.get('/register', function (req, res, next) {
 router.get('/login', function (req, res, next) {
   // req.flash('error', 'You are now logged in')
   const flashMessages = res.locals.getMessages()
+  console.log(req.url)
   console.log('flash', flashMessages)
 
   if (flashMessages.error) {

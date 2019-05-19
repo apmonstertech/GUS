@@ -15,7 +15,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <title>NODE</title>
-
+    <script>
+        $(document).ready(function () {
+            if (window.pathName != "/") {
+                console.log("XDDDDDDD")
+                $("#info")[0].style.setProperty('display', 'none', 'important');
+            }
+        })
+    </script>
 </head>
 
 <body>
@@ -59,9 +66,10 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav text-right min-dropdown">
                     <li class="nav-item dropdown ">
-                        <a id="my_prof" class="dropdown-item" href="/users/profile">Mój profil</a>
                         <a id="rank" class="dropdown-item" href="/ranking">Ranking</a>
-                        <a id="log" class="dropdown-item" href="/users/logout">Wyloguj</a>
+                        <a id="log" class="dropdown-item" href="/users/login">Zaloguj</a>
+                        <a id="reg" class="dropdown-item" data-toggle="modal" data-target="#registerModal">Zarejestruj sie
+                        </a>
                     </li>
                 </ul>
                 <ul class="navbar-nav text-right max-dropdown">
@@ -71,10 +79,11 @@
                             Gość
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a id="rank" class="dropdown-item">Ranking</a>
+                            <a id="rank" class="dropdown-item" href="/ranking">Ranking</a>
                             <a id="log" class="dropdown-item" href="/users/login">Zaloguj</a>
                             <a id="reg" class="dropdown-item" data-toggle="modal" data-target="#registerModal">Zarejestruj
-                                sie</a>
+                                sie
+                            </a>
                         </div>
                     </li>
                 </ul>
@@ -83,6 +92,8 @@
         {{{body}}}
     </div>
     {{>additional}}
+
+
 </body>
 
 </html>
