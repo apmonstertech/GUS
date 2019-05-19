@@ -24,7 +24,7 @@ $(document).ready(function () {
     scene.add(wall1)
     var wall2 = wall1.clone();
     wall2.position.z = -200
-    wall2.name="map"
+    // wall2.name="map"
     scene.add(wall2)
     var wall3Geo = new THREE.BoxGeometry(2,300,300)
     var wall3Mat = new THREE.MeshNormalMaterial({
@@ -46,7 +46,7 @@ $(document).ready(function () {
     wall6.position.set(140,0,-140)
     scene.add(wall6)
     wall6.lookAt(new THREE.Vector3(0,0,0));
-    // wall1.name="trophy"
+    wall1.name="map"
     var lookPoint = new THREE.Mesh();
     lookPoint.position.x = 100
     lookPoint.position.y = 50
@@ -63,10 +63,10 @@ $(document).ready(function () {
         // called when the resource is loaded
         function ( gltf ) {
             scene.add( gltf.scene );
+            gltf.scene.children[2].name = ""
             gltf.scene.scale.set(50,50,50)
             gltf.scene.position.set(0,50,-170)
             gltf.scene.lookAt(scene.position)
-            console.log(gltf.scene)
         },
         // called while loading is progressing
         function ( xhr ) {
@@ -86,6 +86,7 @@ $(document).ready(function () {
         '/gfx/models/frame.gltf',
         // called when the resource is loaded
         function ( gltf ) {
+            gltf.scene.children[2].name = "map"
             scene.add( gltf.scene );
             gltf.scene.scale.set(15,15,15)
             gltf.scene.position.set(0,70,170)
@@ -109,6 +110,7 @@ $(document).ready(function () {
         '/gfx/models/text.gltf',
         // called when the resource is loaded
         function ( gltf ) {
+            gltf.scene.children[2].name = "quiz"
             scene.add( gltf.scene );
             gltf.scene.scale.set(15,15,15)
             gltf.scene.position.set(100,50,10)
