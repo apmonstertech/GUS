@@ -18,9 +18,9 @@
     <script>
         $(document).ready(function () {
             if (window.location.pathname != "/") {
-                console.log("XDDDDDDD")
                 $("#info")[0].style.setProperty('display', 'none', 'important');
             }
+            
         })
     </script>
 </head>
@@ -28,7 +28,7 @@
 <body>
     <div class="full-height d-flex flex-column">
         <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="#"><span id="logo"> Quiz Game Logo </span></a>
+            <a class="navbar-brand" href="/"><span id="logo"> Quiz Game Logo </span></a>
             {{#if user}}
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">

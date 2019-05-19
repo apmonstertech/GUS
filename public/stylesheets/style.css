@@ -607,3 +607,11 @@ path {
 ::-webkit-scrollbar {
     display: none;
 }
+.flag-click{
+    cursor: pointer;
+    width:250px;
+    height: 250px;
+}
+#flags{
+    flex-wrap: wrap;
+}

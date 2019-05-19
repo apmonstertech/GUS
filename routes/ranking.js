@@ -24,5 +24,14 @@ router.post('/starter', function (req, res, next) {
         res.send(obj)
     });
 });
-
+router.post('/ranked', function (req, res, next) {
+    var q = User.find().limit(3).sort({ scoreQuiz: -1 });
+    q.exec(function (err, docs) {
+        var obj = []
+        docs.map(m => {
+            obj.push({ username: m.username, score: m.scoreQuiz })
+        })
+        res.send(obj)
+    });
+});
 module.exports = router;

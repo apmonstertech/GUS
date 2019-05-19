@@ -36,7 +36,28 @@ $(document).ready(function(){
         setMaxAm();
         setMaxPop();
     }
-    
+    $(".flag-click").click(function(e){
+        $("#stats").show();
+        var name = e.target.src.split("/")[5].split(".")[0].toUpperCase()
+        console.log(name)
+        for(var x = 0; x < countries.length; x++){
+            if(countries[x].code == name){
+                id= x
+                break;
+            }
+        }
+        
+        var diffPop = Math.floor(maxPop - Number(countries[id].population));
+        var popPerc = Math.floor(diffPop/maxAmDiff*100);
+        popdiff = 500*popPerc/100;
+        console.log(popdiff)
+        var diffSize = Math.floor(maxSize - Number(countries[id].size));
+        var sizePerc = Math.floor(diffSize/maxSizeDiff*100);
+        sizediff = 450*sizePerc/100;
+        $("#size").html(countries[id].size +"km<sup>2</sup>")
+        $("#population").html(countries[id].population+"mln")
+        $("#country_name").html(countries[id].name)
+    })
     $("#amount-btn").click(function(){
         for(var x = 0; x < countries.length; x++){
             var thisDiff = Math.floor(maxPop - Number(countries[x].population))

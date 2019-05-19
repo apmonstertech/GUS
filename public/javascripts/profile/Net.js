@@ -1,9 +1,9 @@
 class Net {
     constructor() { }
 
-    sendData(fn) {
+    ranked(fn) {
         $.ajax({
-            url: "/profile",
+            url: "/ranking/ranked",
             type: "POST",
             success: function (data) {
                 fn(data)
