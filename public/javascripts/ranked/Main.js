@@ -12,7 +12,7 @@ $(document).ready(function () {
     }
     function getQuestion(obj, count) {
         var question = obj[count];
-        $("#quiz-que").html(question.question);
+        $(".quiz-que").html(question.question);
         $("#quiz-count").html((count + 1) + "/" + obj.length);
         $("#quiz-left").html(point);
         $("#quiz-a").html(question.ans1);
@@ -21,7 +21,7 @@ $(document).ready(function () {
         $("#quiz-d").html(question.ans4);
     }
     function end(lost) {
-        if(lost){
+        if (lost) {
             $("#complete").addClass("d-flex");
             $("#points").html("<p>PRZEGRAŁEŚ</p>")
             setTimeout(function () {
@@ -29,7 +29,7 @@ $(document).ready(function () {
             }, 1500)
         } else {
             $("#complete").addClass("d-flex");
-            $("#points").html("Udało Ci się zdobyć "+ point +" punktów! <p>GRATULACJE!</p>")
+            $("#points").html("Udało Ci się zdobyć " + point + " punktów! <p>GRATULACJE!</p>")
             net.sendScore(
                 point
             )
@@ -47,7 +47,7 @@ $(document).ready(function () {
                 if (element.attributes.answear.value == questions[counter].ansRight) element.style.backgroundColor = "#00ff00";
             }
             right++;
-            point += Number(right)*1000;
+            point += Number(right) * 1000;
             $("#quiz-left").html(point)
         } else {
             end(true)

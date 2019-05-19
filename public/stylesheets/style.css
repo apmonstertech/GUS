@@ -632,3 +632,18 @@ path {
     height: auto;
     fill: #fff;
 }
+
+.question-min {
+    display: none !important;
+}
+
+@media (max-width: 576px) {
+    .question {
+        display: none !important;
+    }
+
+    .question-min {
+        display: block !important;
+        display: flex !important;
+    }
+}

@@ -31,7 +31,7 @@ router.get('/starter', function (req, res, next) {
 });
 
 router.post('/starter', function (req, res, next) {
-    Quiz.findRandom({}, {}, { limit: 1 }, function (err, results) {
+    Quiz.findRandom({}, {}, { limit: 10 }, function (err, results) {
         if (!err) {
             console.log(results);
             setUp = results
