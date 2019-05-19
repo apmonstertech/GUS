@@ -38,6 +38,7 @@ $(document).ready(function(){
     }
     $(".flag-click").click(function(e){
         $("#stats").show();
+        
         var name = e.target.src.split("/")[5].split(".")[0].toUpperCase()
         console.log(name)
         for(var x = 0; x < countries.length; x++){
@@ -54,6 +55,11 @@ $(document).ready(function(){
         var diffSize = Math.floor(maxSize - Number(countries[id].size));
         var sizePerc = Math.floor(diffSize/maxSizeDiff*100);
         sizediff = 450*sizePerc/100;
+        $("#amount .bottom").width(popdiff+50 + "px")
+        $("#amount .top")[0].style.marginLeft = popdiff+50 - 40 + "px";
+        $("#size .bottom").width(sizediff+50 + "px")
+        $("#size .top")[0].style.marginLeft = sizediff+50 - 40 + "px";
+        $("#stats").addClass("hover")
         $("#size").html(countries[id].size +"km<sup>2</sup>")
         $("#population").html(countries[id].population+"mln")
         $("#country_name").html(countries[id].name)
@@ -89,6 +95,7 @@ $(document).ready(function(){
     })
     $(".cls-15").click(function(e){
         $("#stats").show();
+        $("#stats").addClass("hover")
         var name = e.target.id
         for(var x = 0; x < countries.length; x++){
             if(countries[x].code == name){
@@ -99,29 +106,22 @@ $(document).ready(function(){
         
         var diffPop = Math.floor(maxPop - Number(countries[id].population));
         var popPerc = Math.floor(diffPop/maxAmDiff*100);
-        popdiff = 500*popPerc/100;
-        console.log(popdiff)
+        popdiff = 400*popPerc/100; 
         var diffSize = Math.floor(maxSize - Number(countries[id].size));
         var sizePerc = Math.floor(diffSize/maxSizeDiff*100);
-        sizediff = 500*sizePerc/100;
-        $("#size").html(countries[id].size +"km<sup>2</sup>")
-        $("#population").html(countries[id].population+"mln")
-        $("#country_name").html(countries[id].name)
-    })
-    $("#stats").mouseover(function(){
+        sizediff = 400*sizePerc/100;
         $("#amount .bottom").width(popdiff+50 + "px")
         $("#amount .top")[0].style.marginLeft = popdiff+50 - 40 + "px";
         $("#size .bottom").width(sizediff+50 + "px")
         $("#size .top")[0].style.marginLeft = sizediff+50 - 40 + "px";
+        $("#stats").addClass("hover")
+        $("#size").html(countries[id].size +"km<sup>2</sup>")
+        $("#population").html(countries[id].population+"mln")
+        $("#country_name").html(countries[id].name)
     })
-    $("#stats").mouseout(function(){
-        $("#amount .bottom").width("50px")
-        $("#amount .top")[0].style.marginLeft = "10px";
-        $("#size .bottom").width("50px")
-        $("#size .top")[0].style.marginLeft = "10px";
-    })
+    
     $(".modal").click(function(){
-        if($("#stats").is(":visible")) $("#stats").hide()
+        if($("#stats").is(":visible")) $("#stats").hide(); $("#stats").removeClass("hover")
     })
     net.sendData(getCountries)
 })

@@ -592,13 +592,13 @@ path {
     height: 150px;
 }
 
-#stats:hover div.top {
+#stats.hover div.top {
     z-index: 999;
     background-color: #1f81ac;
     margin-left: 360px;
 }
 
-#stats:hover div.bottom {
+#stats.hover div.bottom {
     z-index: 998;
     background-color: #1a6c90;
     background: -moz-linear-gradient(-90deg, #1a6c90, #14506b);
