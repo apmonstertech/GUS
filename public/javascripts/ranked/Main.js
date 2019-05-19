@@ -19,15 +19,20 @@ $(document).ready(function () {
         $("#quiz-c").html(question.ans3);
         $("#quiz-d").html(question.ans4);
     }
-    function end() {
-        $("#complete").addClass("d-flex");
-        $("#points").html(right + " / " + questions.length)
-        net.sendScore(
-            right
-        )
-        setTimeout(function () {
-            window.location.href = "/quiz";
-        }, 1500)
+    function end(lost) {
+        if(lost){
+            $("#complete").addClass("d-flex");
+            $("#points").html("PRZEGRAŁEŚ")
+        } else {
+            $("#complete").addClass("d-flex");
+            $("#points").html(right + " / " + questions.length)
+            net.sendScore(
+                right
+            )
+            setTimeout(function () {
+                window.location.href = "/quiz";
+            }, 1500)
+        }
     }
     $(".ans").click(function (e) {
         var anss = $(".ans")
@@ -38,6 +43,8 @@ $(document).ready(function () {
         }
         if (e.target.attributes.answear.value == questions[counter].ansRight) {
             right++;
+        } else {
+            end(true)
         }
         counter++
         setTimeout(function () {
@@ -46,7 +53,7 @@ $(document).ready(function () {
                 element.style.backgroundColor = "";
             }
             if (counter == questions.length) {
-                end()
+                end(false)
             } else {
                 getQuestion(questions, counter)
             }
