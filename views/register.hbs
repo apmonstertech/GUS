@@ -1,5 +1,6 @@
 <div class="container">
-    <h2>Page register</h2>
+    <h2>Zarejestruj się</h2>
+    {{!--
     <form action="/users/register" method="POST" autocomplete="off">
         {{#if errors}} {{#each errors}}
         <div class="alert alert-danger">{{msg}}</div>
@@ -25,5 +26,49 @@
         <div class="form-group ">
             <button type="submit " class="btn btn-info "><i class="fa fa-database "></i> Submit</button>
         </div>
+    </form> --}}
+
+    <form action="/users/register" method="POST">
+        {{#if errors}} {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+        {{/each}} {{else}} {{/if}}
+        <div class="form-group">
+            <input type="text" class="form-control form-control-input" id="usernameReq" style="background-color: transparent" name="username"
+                placeholder="Wprowadź swoją nazwę użytkownika" required>
+            <label for="nick" class="form-control-title">NAZWA UŻYTKOWNIKA</label>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control form-control-input" id="passwordReq" style="background-color: transparent" name="password"
+                placeholder="Wprowadź swoje hasło" required>
+            <label for="password" class="form-control-title">HASŁO</label>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control form-control-input" id="exampleInputPassword1" style="background-color: transparent"
+                name="passwordAgain" placeholder="Potwierdź hasło">
+            <label for="exampleInputPassword1" class="form-control-title">POTWIERDŹ HASŁO</label>
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control form-control-input" id="email" name="email" style="background-color: transparent"
+                placeholder="Wprowadź swój adres e-mail">
+            <label for="email" class="form-control-title">E-MAIL</label>
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control form-control-input" id="age" name="age" style="background-color: transparent" placeholder="Wprowadź swój wiek           14">
+            <label for="age" class="form-control-title">WIEK</label>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                <label class="form-check-label" for="invalidCheck">
+                    Agree to terms and conditions
+                </label>
+                <div class="invalid-feedback">
+                    You must agree before submitting.
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-control">Zarejestruj się</button>
+        <button type="submit" class="btn btn-control-login">Masz już konto?<span class="btn-title-loginup"> Zaloguj się
+            </span></button>
     </form>
 </div>
