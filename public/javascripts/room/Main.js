@@ -15,7 +15,7 @@ $(document).ready(function () {
     })
     var floor = new THREE.Mesh(floorGeo,floorMat)
     scene.add(floor)
-    var wall1Geo = new THREE.BoxGeometry(200,200,2)
+    var wall1Geo = new THREE.BoxGeometry(300,200,2)
     var wall2Mat = new THREE.MeshBasicMaterial({
         map: new THREE.TextureLoader().load( "/gfx/bg2.jpg" ),
     })
@@ -25,7 +25,7 @@ $(document).ready(function () {
     })
     var wall10 = new THREE.Mesh(wall10Geo,wall10Mat)
     var wall1 = new THREE.Mesh(wall1Geo,wall10Mat)
-    wall1.position.set(-40,50,200)
+    wall1.position.set(-50,50,200)
     scene.add(wall1)
     var wall2Geo = new THREE.BoxGeometry(2,200,200)
     var wall2 = new THREE.Mesh(wall1Geo,wall2Mat)
@@ -74,11 +74,14 @@ $(document).ready(function () {
         '/gfx/models/bookshelf.gltf',
         // called when the resource is loaded
         function ( gltf ) {
+            gltf.scene.children[2].material = new THREE.MeshBasicMaterial({
+                map: new THREE.TextureLoader().load( "/gfx/bookshelf.jpg" ),        
+            })
             scene.add( gltf.scene );
             gltf.scene.children[2].name = ""
             gltf.scene.scale.set(50,50,50)
-            gltf.scene.position.set(-20,50,-190)
-            gltf.scene.lookAt(new THREE.Vector3(-20,30,0))
+            gltf.scene.position.set(-20,52,-190)
+            gltf.scene.lookAt(new THREE.Vector3(-20,52,0))
         },
         // called while loading is progressing
         function ( xhr ) {
@@ -98,11 +101,16 @@ $(document).ready(function () {
         '/gfx/models/frame.gltf',
         // called when the resource is loaded
         function ( gltf ) {
+            gltf.scene.children[2].material = new THREE.MeshBasicMaterial({
+                map: new THREE.TextureLoader().load( "/gfx/map.jpg" ),        
+            })
             gltf.scene.children[2].name = "map"
             scene.add( gltf.scene );
             gltf.scene.scale.set(15,15,15)
-            gltf.scene.position.set(0,70,170)
+            gltf.scene.position.set(0,70,190)
             gltf.scene.rotation.x = 300
+            gltf.scene.rotation.y = 33
+            
         },
         // called while loading is progressing
         function ( xhr ) {
@@ -122,6 +130,9 @@ $(document).ready(function () {
         '/gfx/models/text.gltf',
         // called when the resource is loaded
         function ( gltf ) {
+            gltf.scene.children[2].material = new THREE.MeshBasicMaterial({
+                map: new THREE.TextureLoader().load( "/gfx/text.jpg" ),        
+            })
             gltf.scene.children[2].name = "quiz"
             scene.add( gltf.scene );
             gltf.scene.scale.set(15,15,15)
