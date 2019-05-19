@@ -15,37 +15,49 @@ $(document).ready(function () {
     })
     var floor = new THREE.Mesh(floorGeo,floorMat)
     scene.add(floor)
-    var wall1Geo = new THREE.BoxGeometry(300,300,2)
-    var wall1Mat = new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load( "/gfx/lama.png" ),
+    var wall1Geo = new THREE.BoxGeometry(200,200,2)
+    var wall2Mat = new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load( "/gfx/bg2.jpg" ),
     })
-    var wall1 = new THREE.Mesh(wall1Geo,wall1Mat)
-    wall1.position.set(-100,0,200)
+    var wall10Geo = new THREE.BoxGeometry(200,200,2)
+    var wall10Mat = new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load( "/gfx/bg3.jpg" ),
+    })
+    var wall10 = new THREE.Mesh(wall10Geo,wall10Mat)
+    var wall1 = new THREE.Mesh(wall1Geo,wall10Mat)
+    wall1.position.set(-40,50,200)
     scene.add(wall1)
-    var wall2 = wall1.clone();
+    var wall2Geo = new THREE.BoxGeometry(2,200,200)
+    var wall2 = new THREE.Mesh(wall1Geo,wall2Mat)
     wall2.position.z = -200
+    wall2.position.y = 50
+    wall2.position.x = -40
     // wall2.name="map"
     scene.add(wall2)
-    var wall3Geo = new THREE.BoxGeometry(2,300,300)
-    var wall3Mat = new THREE.MeshNormalMaterial({
-        color:0xffffff
+    var wall3Geo = new THREE.BoxGeometry(2,200,200)
+    var wall3Mat = new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load( "/gfx/bg1.png" ),
     })
     var wall3 = new THREE.Mesh(wall3Geo,wall3Mat)
-    wall3.position.set(200,0,0);
+    wall3.position.set(200,50,0);
     wall3.name = "quiz";
     scene.add(wall3);
-    var wall4 = wall3.clone();
+    var wall4Mat = new THREE.MeshBasicMaterial({
+        map: new THREE.TextureLoader().load( "/gfx/bg2.jpg" ),
+    })
+    var wall4 = new THREE.Mesh(wall3Geo,wall4Mat)
+
     wall4.position.x = -200;
     scene.add(wall4)
     camera.position.set(0,50,0)
-    var wall5 = wall1.clone();
-    wall5.position.set(140,0,140)
+    var wall5 = wall10.clone();
+    wall5.position.set(118,50,140)
     scene.add(wall5)
-    wall5.lookAt(new THREE.Vector3(0,0,0))
-    var wall6 = wall1.clone();
-    wall6.position.set(140,0,-140)
+    wall5.lookAt(new THREE.Vector3(0,50,0))
+    var wall6 = wall10.clone();
+    wall6.position.set(118,50,-140)
     scene.add(wall6)
-    wall6.lookAt(new THREE.Vector3(0,0,0));
+    wall6.lookAt(new THREE.Vector3(0,50,0));
     wall1.name="map"
     var lookPoint = new THREE.Mesh();
     lookPoint.position.x = 100
@@ -65,8 +77,8 @@ $(document).ready(function () {
             scene.add( gltf.scene );
             gltf.scene.children[2].name = ""
             gltf.scene.scale.set(50,50,50)
-            gltf.scene.position.set(0,50,-170)
-            gltf.scene.lookAt(scene.position)
+            gltf.scene.position.set(-20,50,-190)
+            gltf.scene.lookAt(new THREE.Vector3(-20,30,0))
         },
         // called while loading is progressing
         function ( xhr ) {
