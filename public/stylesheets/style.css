@@ -631,3 +631,18 @@ path {
     width: 100px;
     height: auto;
 }
+
+.question-min {
+    display: none !important;
+}
+
+@media (max-width: 576px) {
+    .question {
+        display: none !important;
+    }
+
+    .question-min {
+        display: block !important;
+        display: flex !important;
+    }
+}

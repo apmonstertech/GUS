@@ -10,8 +10,7 @@ mongoose.connect('mongodb+srv://Admin:admin@cluster0-qycbe.mongodb.net/ProjectGU
     } else {
         console.log('Error in DB connection : ' + err)
     }
-    
+
+    //mongoimport --host Cluster0-shard-0/cluster0-shard-00-00-qycbe.mongodb.net:27017,cluster0-shard-00-01-qycbe.mongodb.net:27017,cluster0-shard-00-02-qycbe.mongodb.net:27017 --ssl --username Admin --password admin --authenticationDatabase admin --db ProjectGUS --collection quizzes --type csv --out E:\GUSProject\GUS\pytaniaUTF-8Przecinki.csv --fields question,ans1,ans2,ans3,ans4,ansRight
+
 });
-// var db = mongoose.connection;
-// var collections = mongoose.connections[0].collections;
-// var names = [];
