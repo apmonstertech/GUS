@@ -308,7 +308,8 @@ body {
 }
 
 path.cls-15:hover {
-    fill: #ff0 !important;
+    cursor: pointer;
+    fill: rgb(13, 32, 199) !important;
 }
 
 path {
@@ -361,6 +362,13 @@ path {
     border-radius: 0;
 }
 
+.nav-link {
+    color: #ffffff;
+}
+
+.nav-link:hover {
+    color: #eeeeee;
+}
 
 .navbar-toggler-icon {
     /* background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000…p=%27round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); */
@@ -536,6 +544,7 @@ path {
 }
 
 #bar li div.bottom div.infobox {
+
     padding: 40px 0 0 600px;
     -webkit-transition-property: color;
     -webkit-transition-duration: 500ms;

@@ -34,19 +34,6 @@ router.get('/login', function (req, res, next) {
 
 });
 
-// router.post('/login/ajax', passport.authenticate('local-login'));
-
-// router.post('/login', function (req, res, next) {
-//   console.log(req.body)
-//   passport.authenticate('local',
-//     { failureRedirect: '/', failureFlash: true }),
-//     function (err, user, info) {
-
-//       console.log("PASUJE")
-
-//     }
-// });
-
 router.post('/login',
   passport.authenticate('local',
     { failureRedirect: '/users/login', failureFlash: true }),
@@ -56,37 +43,6 @@ router.post('/login',
 
   });
 
-// router.post('/login', function (req, res) {
-//   console.log(req)
-//   passport.authenticate('local', function (err, user, params) {
-//     if (req.xhr) {
-//       //thanks @jkevinburton
-//       if (err) { return res.json({ error: err.message }); }
-//       // e.g. in auth.js:
-//       // if (!user.emailVerified) { return done(null, false, { message: 'Email is not verified. Please check your email for the link.' }); }
-//       if (!user && params) { return res.json({ error: params.error }); }
-//       if (!user) { return res.json({ error: "Invalid Login" }); }
-//       // req.login(user, {}, function (err) {
-//       //   if (err) { return res.json({ error: err }); }
-//       //   return res.json(
-//       //     {
-//       //       user: {
-//       //         user: req.user.user,
-//       //         password: req.user.password,
-//       //       },
-//       //       success: true
-//       //     });
-//       // });
-//     } else {
-//       if (err) { return res.redirect('/login'); }
-//       if (!user) { return res.redirect('/login'); }
-//       req.login(user, {}, function (err) {
-//         if (err) { return res.redirect('/login'); }
-//         return res.redirect('/');
-//       });
-//     }
-//   })(req, res);
-// });
 
 passport.serializeUser(function (user, done) {
   done(null, user.id);

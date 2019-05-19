@@ -43,10 +43,10 @@ router.post('/starter', function (req, res, next) {
 
 router.get('/ranked', function (req, res, next) {
     if (req.isAuthenticated()) {
-        res.render('quizStarter', { "user": req.user })
+        res.render('ranked', { "user": req.user })
         console.log(req.user.username)
     } else {
-        res.render('quizStarter')
+        res.render('ranked')
     }
 });
 
@@ -61,7 +61,20 @@ router.post('/ranked', function (req, res, next) {
 
 });
 
-router.post('/starter/result', function (req, res, next) {
+router.post('/ranked/result', function (req, res, next) {
+    console.log(req.body)
+    var score = parseInt(req.body.score) * 5
+    if (req.user) {
+        User.findOne({ username: req.user.username }, function (error, docs) {
+            docs.scoreQuiz = (docs.scoreQuiz + score)
+            console.log(docs);
+            docs.save()
+        });
+    }
+
+});
+
+router.post('/ranked/result', function (req, res, next) {
     console.log(req.body)
     var score = parseInt(req.body.score) * 5
     if (req.user) {
