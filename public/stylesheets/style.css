@@ -13,7 +13,8 @@ li {
 
 body {
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     background-image: url(../gfx/background.png);
 }
 
@@ -600,4 +601,7 @@ path {
 
 #stats {
     background-color: rgba(169, 169, 169, 0.5)
+}
+::-webkit-scrollbar { 
+    display: none; 
 }

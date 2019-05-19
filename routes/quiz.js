@@ -43,10 +43,10 @@ router.post('/starter', function (req, res, next) {
 
 router.get('/ranked', function (req, res, next) {
     if (req.isAuthenticated()) {
-        res.render('ranked', { "user": req.user })
+        res.render('quizRanked', { "user": req.user })
         console.log(req.user.username)
     } else {
-        res.render('ranked')
+        res.render('quizRanked')
     }
 });
 
