@@ -112,7 +112,7 @@ $(document).ready(function () {
         }
     })
     function render() {
-        var windowHeight = $(window).height() - $("header").height()
+        var windowHeight = $(window).height() - $("nav").height()
         var windowWidth = $(window).width()
         renderer.setSize(windowWidth, windowHeight);
         if(Math.floor(lookPoint.position.clone().distanceTo(point)) >1){
