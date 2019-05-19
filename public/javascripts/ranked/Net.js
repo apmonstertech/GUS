@@ -4,7 +4,7 @@ class Net {
     sendData(action, fn) {
         $("#loader").show()
         $.ajax({
-            url: "/",
+            url: "/quiz/ranked",
             data: {
                 action: action,
             },
