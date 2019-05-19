@@ -53,7 +53,6 @@ router.get('/ranked', function (req, res, next) {
 router.post('/ranked', function (req, res, next) {
     Quiz.findRandom({}, {}, { limit: 10 }, function (err, results) {
         if (!err) {
-            console.log(results);
             setUp = results
             res.send(results)
         }
@@ -62,12 +61,10 @@ router.post('/ranked', function (req, res, next) {
 });
 
 router.post('/ranked/result', function (req, res, next) {
-    console.log(req.body)
-    var score = parseInt(req.body.score) * 5
+    var score = parseInt(req.body.score)
     if (req.user) {
         User.findOne({ username: req.user.username }, function (error, docs) {
             docs.scoreQuiz = (docs.scoreQuiz + score)
-            console.log(docs);
             docs.save()
         });
     }
@@ -75,12 +72,10 @@ router.post('/ranked/result', function (req, res, next) {
 });
 
 router.post('/ranked/result', function (req, res, next) {
-    console.log(req.body)
     var score = parseInt(req.body.score) * 5
     if (req.user) {
         User.findOne({ username: req.user.username }, function (error, docs) {
             docs.scoreTraining = (docs.scoreTraining + score)
-            console.log(docs);
             docs.save()
         });
     }

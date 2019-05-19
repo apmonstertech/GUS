@@ -13,9 +13,12 @@
 <script>
     $.getScript("/javascripts/three_ver97.js", function()
     {
-        var imported = document.createElement('script');
-        imported.src = "/javascripts/room/Main.js"
-        document.head.appendChild(imported);
+        $.getScript("/javascripts/GLTFLoader.js", function()
+        {
+            var imported = document.createElement('script');
+            imported.src = "/javascripts/room/Main.js"
+            document.head.appendChild(imported);
+        });
     });
     
 </script>

@@ -46,7 +46,7 @@ $(document).ready(function () {
     wall6.position.set(140,0,-140)
     scene.add(wall6)
     wall6.lookAt(new THREE.Vector3(0,0,0));
-    wall1.name="trophy"
+    // wall1.name="trophy"
     var lookPoint = new THREE.Mesh();
     lookPoint.position.x = 100
     lookPoint.position.y = 50
@@ -56,6 +56,77 @@ $(document).ready(function () {
     var counter = 0;
     var rotateDelta = new THREE.Vector2();
     var point = new THREE.Vector3(100,50,0);
+    var loader = new THREE.GLTFLoader()
+    loader.load(
+        // resource URL
+        '/gfx/models/bookshelf.gltf',
+        // called when the resource is loaded
+        function ( gltf ) {
+            scene.add( gltf.scene );
+            gltf.scene.scale.set(50,50,50)
+            gltf.scene.position.set(0,50,-170)
+            gltf.scene.lookAt(scene.position)
+            console.log(gltf.scene)
+        },
+        // called while loading is progressing
+        function ( xhr ) {
+    
+            console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    
+        },
+        // called when loading has errors
+        function ( error ) {
+            console.log(error)
+            console.log( 'An error happened' );
+    
+        }
+    );
+    loader.load(
+        // resource URL
+        '/gfx/models/frame.gltf',
+        // called when the resource is loaded
+        function ( gltf ) {
+            scene.add( gltf.scene );
+            gltf.scene.scale.set(15,15,15)
+            gltf.scene.position.set(0,70,170)
+            gltf.scene.rotation.x = 300
+        },
+        // called while loading is progressing
+        function ( xhr ) {
+    
+            console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    
+        },
+        // called when loading has errors
+        function ( error ) {
+            console.log(error)
+            console.log( 'An error happened' );
+    
+        }
+    );
+    loader.load(
+        // resource URL
+        '/gfx/models/text.gltf',
+        // called when the resource is loaded
+        function ( gltf ) {
+            scene.add( gltf.scene );
+            gltf.scene.scale.set(15,15,15)
+            gltf.scene.position.set(100,50,10)
+            gltf.scene.lookAt(camera.position)
+        },
+        // called while loading is progressing
+        function ( xhr ) {
+    
+            console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    
+        },
+        // called when loading has errors
+        function ( error ) {
+            console.log(error)
+            console.log( 'An error happened' );
+    
+        }
+    );
     $(document).keydown(function(e){
         if(e.key == "a" || e.key == "A"){
             $("#l").click()
@@ -69,7 +140,7 @@ $(document).ready(function () {
             } else if (counter == 0) {
                 window.location.href = "/quiz";
             } else {
-                window.location.href = "/trophy";
+                // window.location.href = "/trophy";
             }
         }
     })
