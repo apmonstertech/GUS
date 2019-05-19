@@ -137,6 +137,7 @@ body {
     text-shadow: none;
     box-shadow: none;
     left: 0;
+    z-index: 1000;
     animation: arrow .6s linear infinite;
     animation-direction: alternate-reverse;
 }
