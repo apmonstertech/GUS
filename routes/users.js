@@ -2,11 +2,9 @@ var express = require('express');
 var router = express.Router();
 var passport = require("passport");
 var LocalStrategy = require('passport-local').Strategy;
-const jwt = require('jsonwebtoken')
 var User = require('../models/user');
 const blackList = ['chuj', 'kurwa', 'kutas', 'pizda', 'cipa', 'ciota', 'kutasiarz', 'skurwiel', 'skurwysyn', 'debil', 'dzban', 'stary', 'stara', 'wazon', 'wale', 'wiadro', 'frajer', 'qtas', 'qrwa', 'jabany', 'jebać', 'wykurw']
 
-/* GET users listing. */
 router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
@@ -17,7 +15,6 @@ router.get('/register', function (req, res, next) {
 
 router.get('/login', function (req, res, next) {
   const flashMessages = res.locals.getMessages()
-
   if (flashMessages.error) {
     res.render('login', {
       showErrors: true,
@@ -27,7 +24,6 @@ router.get('/login', function (req, res, next) {
   else {
     res.render('login');
   }
-
 });
 
 router.post('/login',
@@ -78,7 +74,6 @@ router.post('/register', function (req, res, next) {
   var elo = username.toLowerCase()
   blackList.map(m => {
     if (elo.includes(m)) {
-      console.log("ZŁY USER")
       req.checkBody('username', 'Wrong username').contains('username', m)
     }
   })
@@ -94,7 +89,7 @@ router.post('/register', function (req, res, next) {
   var errors = req.validationErrors();
 
   if (errors) {
-    console.log("Errors");
+
     res.render('register', { errors: errors })
   } else {
     var newUser = new User({
@@ -109,7 +104,6 @@ router.post('/register', function (req, res, next) {
 
     User.getUserByUsername(username, function (err, user) {
       if (err) throw err;
-      console.log(user)
       if (user) {
         console.log("USER EXISTS")
       } else {

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Countries = require('../models/countries');
-/* GET home page.  ensureAuthenticated, */
+
 router.get('/', function (req, res, next) {
   var hour = 3600000;
   req.session.cookie.expires = new Date(Date.now() + hour);
@@ -24,7 +24,6 @@ router.post("/", function (req, res, next) {
     if (!err) {
       res.send(dosc)
     } else {
-      console.log("ERROR in counry")
     }
   })
 })

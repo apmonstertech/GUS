@@ -6,12 +6,9 @@ var User = require('../models/user');
 require('../db/db')
 const mongoose = require('mongoose');
 var random = require('mongoose-simple-random');
-var setUp = []
-
 router.get('/', function (req, res, next) {
     if (req.isAuthenticated()) {
         res.render('panel', { "user": req.user })
-        console.log(req.user.username)
     } else {
         res.render('panel');
     }
