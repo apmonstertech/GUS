@@ -13,8 +13,8 @@ $(document).ready(function () {
     function getQuestion(obj, count) {
         var question = obj[count];
         $(".quiz-que").html(question.question);
-        $("#quiz-count").html((count + 1) + "/" + obj.length);
-        $("#quiz-left").html(point);
+        $(".quiz-count").html((count + 1) + "/" + obj.length);
+        $(".quiz-left").html(point);
         $("#quiz-a").html(question.ans1);
         $("#quiz-b").html(question.ans2);
         $("#quiz-c").html(question.ans3);
@@ -24,6 +24,8 @@ $(document).ready(function () {
         if (lost) {
             $("#complete").addClass("d-flex");
             $("#points").html("<p>PRZEGRAŁEŚ</p>")
+            $("#points").addClass("btn-danger")
+            $("#points").removeClass("btn-success")
             setTimeout(function () {
                 window.location.href = "/quiz";
             }, 1500)
@@ -48,7 +50,7 @@ $(document).ready(function () {
             }
             right++;
             point += Number(right) * 1000;
-            $("#quiz-left").html(point)
+            $(".quiz-left").html(point)
         } else {
             end(true)
         }

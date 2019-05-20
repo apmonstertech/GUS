@@ -12,8 +12,8 @@ $(document).ready(function () {
     function getQuestion(obj, count) {
         var question = obj[count];
         $(".quiz-que").html(question.question);
-        $("#quiz-count").html((count + 1) + "/" + obj.length);
-        $("#quiz-left").html("&#8734;");
+        $(".quiz-count").html((count + 1) + "/" + obj.length);
+        $(".quiz-left").html("&#8734;");
         $("#quiz-a").html(question.ans1);
         $("#quiz-b").html(question.ans2);
         $("#quiz-c").html(question.ans3);
