@@ -2,26 +2,19 @@ var express = require('express');
 var router = express.Router();
 var passport = require("passport");
 var LocalStrategy = require('passport-local').Strategy;
-const jwt = require('jsonwebtoken')
 var User = require('../models/user');
 const blackList = ['chuj', 'kurwa', 'kutas', 'pizda', 'cipa', 'ciota', 'kutasiarz', 'skurwiel', 'skurwysyn', 'debil', 'dzban', 'stary', 'stara', 'wazon', 'wale', 'wiadro', 'frajer', 'qtas', 'qrwa', 'jabany', 'jebać', 'wykurw']
 
-/* GET users listing. */
 router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
 
 router.get('/register', function (req, res, next) {
-  console.log('register')
   res.render('register', { title: "Register Page" })
 });
 
 router.get('/login', function (req, res, next) {
-  // req.flash('error', 'You are now logged in')
   const flashMessages = res.locals.getMessages()
-  console.log(req.url)
-  console.log('flash', flashMessages)
-
   if (flashMessages.error) {
     res.render('login', {
       showErrors: true,
@@ -31,15 +24,12 @@ router.get('/login', function (req, res, next) {
   else {
     res.render('login');
   }
-  //res.render('login', { title: "Login Page" });
-
 });
 
 router.post('/login',
   passport.authenticate('local',
     { failureRedirect: '/users/login', failureFlash: true }),
   function (req, res) {
-    // req.flash('info', 'You are now logged in')	    // req.flash('info', 'You are now logged in')
     res.redirect('/')
 
   });
@@ -57,7 +47,6 @@ passport.deserializeUser(function (id, done) {
 
 
 passport.use('local', new LocalStrategy(function (username, password, done) {
-  console.log(username)
   User.getUserByUsername(username, function (err, user) {
     if (err) throw err;
     if (!user) {
@@ -79,17 +68,14 @@ passport.use('local', new LocalStrategy(function (username, password, done) {
 
 
 router.post('/register', function (req, res, next) {
-  console.log(req.body)
   var username = req.body.username;
   var email = req.body.email;
   var age = req.body.age;
   var password = req.body.password;
 
   var elo = username.toLowerCase()
-  console.log(elo)
   blackList.map(m => {
     if (elo.includes(m)) {
-      console.log("ZŁY USER")
       req.checkBody('username', 'Wrong username').contains('username', m)
     }
   })
@@ -105,7 +91,7 @@ router.post('/register', function (req, res, next) {
   var errors = req.validationErrors();
 
   if (errors) {
-    console.log("Errors");
+
     res.render('register', { errors: errors })
   } else {
     var newUser = new User({
@@ -120,13 +106,11 @@ router.post('/register', function (req, res, next) {
 
     User.getUserByUsername(username, function (err, user) {
       if (err) throw err;
-      console.log(user)
       if (user) {
         console.log("USER EXISTS")
       } else {
         User.createUser(newUser, function (err, user) {
           if (err) throw err;
-          console.log(user);
         });
         req.flash('succes', 'You are now registered and can logged')
         res.location('/')
@@ -144,7 +128,6 @@ router.get('/logout', function (req, res) {
 router.get('/profile', function (req, res) {
   if (req.isAuthenticated()) {
     res.render('profile', { "user": req.user })
-    console.log(req.user.username)
   } else {
     res.redirect('/users/login')
   }

@@ -1,4 +1,5 @@
 <div class="container">
+    {{#if user}}
     <h1>Mój profil</h1>
     <div class="d-flex justify-content-between col-all">
         <div class="d-flex col-5 flex-column col-data">
@@ -42,6 +43,7 @@
         <tbody id="import">
         </tbody>
     </table>
+    {{/if}}
 </div>
 
 <script>

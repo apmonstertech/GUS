@@ -6,12 +6,9 @@ var User = require('../models/user');
 require('../db/db')
 const mongoose = require('mongoose');
 var random = require('mongoose-simple-random');
-var setUp = []
-
 router.get('/', function (req, res, next) {
     if (req.isAuthenticated()) {
         res.render('panel', { "user": req.user })
-        console.log(req.user.username)
     } else {
         res.render('panel');
     }
@@ -24,7 +21,6 @@ router.post('/', function (req, res, next) {
 router.get('/starter', function (req, res, next) {
     if (req.isAuthenticated()) {
         res.render('quizStarter', { "user": req.user })
-        console.log(req.user.username)
     } else {
         res.render('quizStarter')
     }
@@ -33,8 +29,6 @@ router.get('/starter', function (req, res, next) {
 router.post('/starter', function (req, res, next) {
     Quiz.findRandom({}, {}, { limit: 10 }, function (err, results) {
         if (!err) {
-            console.log(results);
-            setUp = results
             res.send(results)
         }
     });
@@ -44,7 +38,6 @@ router.post('/starter', function (req, res, next) {
 router.get('/ranked', function (req, res, next) {
     if (req.isAuthenticated()) {
         res.render('quizRanked', { "user": req.user })
-        console.log(req.user.username)
     } else {
         res.render('quizRanked')
     }

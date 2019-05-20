@@ -8,7 +8,6 @@ const mongoose = require('mongoose');
 router.get('/', function (req, res, next) {
     if (req.isAuthenticated()) {
         res.render("ranking", { "user": req.user })
-        console.log(req.user.username)
     } else {
         res.render("ranking")
     }
