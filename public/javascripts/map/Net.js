@@ -1,6 +1,5 @@
 class Net {
     constructor() { }
-
     sendData(fn) {
         $("#loader").show()
         $.ajax({

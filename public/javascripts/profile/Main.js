@@ -14,7 +14,6 @@ $(document).ready(function(){
             var age = td.clone().html(obj[x].age)
             var score = td.clone().html(obj[x].score)
             var row = tr.clone().append(no, nick, age, score);
-
             imp.append(row);
         }
     }

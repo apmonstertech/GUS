@@ -4,7 +4,6 @@ $(document).ready(function () {
     var questions;
     var counter = 0;
     net = new Net() // utworzenie obiektu klasy Net
-
     function getData(obj) {
         questions = obj;
         getQuestion(obj, counter)
@@ -51,7 +50,6 @@ $(document).ready(function () {
                 getQuestion(questions, counter)
             }
         }, 2000)
-
     })
     net.sendData("CLICK", getData);
 

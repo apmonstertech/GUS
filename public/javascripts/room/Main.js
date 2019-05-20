@@ -27,12 +27,10 @@ $(document).ready(function () {
     var wall1 = new THREE.Mesh(wall1Geo,wall10Mat)
     wall1.position.set(-50,50,200)
     scene.add(wall1)
-    var wall2Geo = new THREE.BoxGeometry(2,200,200)
     var wall2 = new THREE.Mesh(wall1Geo,wall2Mat)
     wall2.position.z = -200
     wall2.position.y = 50
     wall2.position.x = -40
-    // wall2.name="map"
     scene.add(wall2)
     var wall3Geo = new THREE.BoxGeometry(2,200,200)
     var wall3Mat = new THREE.MeshBasicMaterial({
@@ -46,7 +44,6 @@ $(document).ready(function () {
         map: new THREE.TextureLoader().load( "/gfx/bg2.jpg" ),
     })
     var wall4 = new THREE.Mesh(wall3Geo,wall4Mat)
-
     wall4.position.x = -200;
     scene.add(wall4)
     camera.position.set(0,50,0)

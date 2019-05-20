@@ -1,6 +1,5 @@
 class Net {
     constructor() { }
-
     starter(fn) {
         $.ajax({
             url: "/ranking/starter",
@@ -13,7 +12,6 @@ class Net {
                 console.log(xhr);
             }
         });
-
     }
     ranked(fn) {
         $.ajax({

@@ -12,15 +12,11 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/register', function (req, res, next) {
-  console.log('register')
   res.render('register', { title: "Register Page" })
 });
 
 router.get('/login', function (req, res, next) {
-  // req.flash('error', 'You are now logged in')
   const flashMessages = res.locals.getMessages()
-  console.log(req.url)
-  console.log('flash', flashMessages)
 
   if (flashMessages.error) {
     res.render('login', {
@@ -31,7 +27,6 @@ router.get('/login', function (req, res, next) {
   else {
     res.render('login');
   }
-  //res.render('login', { title: "Login Page" });
 
 });
 
@@ -39,11 +34,9 @@ router.post('/login',
   passport.authenticate('local',
     { failureRedirect: '/users/login', failureFlash: true }),
   function (req, res) {
-    // req.flash('info', 'You are now logged in')	    // req.flash('info', 'You are now logged in')
     res.redirect('/')
 
   });
-
 
 passport.serializeUser(function (user, done) {
   done(null, user.id);
@@ -57,7 +50,6 @@ passport.deserializeUser(function (id, done) {
 
 
 passport.use('local', new LocalStrategy(function (username, password, done) {
-  console.log(username)
   User.getUserByUsername(username, function (err, user) {
     if (err) throw err;
     if (!user) {
@@ -66,7 +58,6 @@ passport.use('local', new LocalStrategy(function (username, password, done) {
     User.comparePassword(password, user.password, function (err, isMatch) {
       if (err) throw done(err);
       if (isMatch) {
-        console.log(user)
         return done(null, user)
       } else {
         return done(null, false, { message: 'Invalid Password' })
@@ -79,14 +70,12 @@ passport.use('local', new LocalStrategy(function (username, password, done) {
 
 
 router.post('/register', function (req, res, next) {
-  console.log(req.body)
   var username = req.body.username;
   var email = req.body.email;
   var age = req.body.age;
   var password = req.body.password;
 
   var elo = username.toLowerCase()
-  console.log(elo)
   blackList.map(m => {
     if (elo.includes(m)) {
       console.log("ZŁY USER")
@@ -126,7 +115,6 @@ router.post('/register', function (req, res, next) {
       } else {
         User.createUser(newUser, function (err, user) {
           if (err) throw err;
-          console.log(user);
         });
         req.flash('succes', 'You are now registered and can logged')
         res.location('/')
@@ -144,7 +132,6 @@ router.get('/logout', function (req, res) {
 router.get('/profile', function (req, res) {
   if (req.isAuthenticated()) {
     res.render('profile', { "user": req.user })
-    console.log(req.user.username)
   } else {
     res.redirect('/users/login')
   }

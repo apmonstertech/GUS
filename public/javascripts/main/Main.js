@@ -28,8 +28,6 @@ $(document).ready(function(){
             }
         }, 1)
         $("#country_flag")[0].style.backgroundImage = "url(/gfx/flags/" + e.target.id.toLowerCase()+".png)";
-    
-    
     })
     $("#up").click(function () {
         var am = Math.floor(window.scrollY);
@@ -45,8 +43,5 @@ $(document).ready(function(){
             }
             $("#up").css("opacity", count)
         }, 1)
-    
     })
-    
-    
 })

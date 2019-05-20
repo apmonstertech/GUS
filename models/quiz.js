@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 var random = require('mongoose-simple-random');
-// require('../db/db')
-
 var db = mongoose.connection;
-
 var QuizSchema = mongoose.Schema({
     question: {
         type: String,
@@ -24,7 +21,6 @@ var QuizSchema = mongoose.Schema({
         type: String
     }
 })
-
 QuizSchema.plugin(random);
 var Quiz = module.exports = mongoose.model('Quiz', QuizSchema)
 
@@ -38,12 +34,9 @@ var Quiz = module.exports = mongoose.model('Quiz', QuizSchema)
 //     console.log(posts)
 // });
 
-
-
 // Quiz.findRandom().limit(10).exec(function (err, songs) {
 //     console.log(songs);
 // });
-
 
 //DZIAŁA NIE RUSZAĆ !!!
 // Quiz.count().exec(function (err, count) {

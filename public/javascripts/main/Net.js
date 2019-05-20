@@ -1,6 +1,5 @@
 class Net {
     constructor() { }
-
     sendData(country,fn) {
         var obj
         $.ajax({
@@ -16,6 +15,5 @@ class Net {
                 console.log(xhr);
             }
         });
-
     }
 }

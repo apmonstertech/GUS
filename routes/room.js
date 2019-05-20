@@ -14,7 +14,6 @@ router.get('/guest', function (req, res, next) {
     res.render("room")
 });
 
-
 module.exports = router;
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {

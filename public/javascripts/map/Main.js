@@ -24,12 +24,12 @@ $(document).ready(function(){
     function setMaxAm(){
         countries.sort(compareAm);
         maxPop = Number(countries[0].population)
-        maxAmDiff = Math.floor(Number(countries[0].population) - Number(countries[countries.length-1].population));
+        maxAmDiff = Math.floor(Number(countries[0].population));
     }
     function setMaxPop(){
         countries.sort(compareSize);
         maxSize = countries[0].size
-        maxSizeDiff = Math.floor(Number(countries[0].size) - Number(countries[countries.length-1].size));
+        maxSizeDiff = Math.floor(Number(countries[0].size));
     }
     function getCountries(obj){
         countries = obj
@@ -38,27 +38,23 @@ $(document).ready(function(){
     }
     $(".flag-click").click(function(e){
         $("#stats").show();
-        
         var name = e.target.src.split("/")[5].split(".")[0].toUpperCase()
-        console.log(name)
         for(var x = 0; x < countries.length; x++){
             if(countries[x].code == name){
                 id= x
                 break;
             }
         }
-        
-        var diffPop = Math.floor(maxPop - Number(countries[id].population));
+        var diffPop = Math.floor(Number(countries[id].population));
         var popPerc = Math.floor(diffPop/maxAmDiff*100);
-        popdiff = 500*popPerc/100;
-        console.log(popdiff)
-        var diffSize = Math.floor(maxSize - Number(countries[id].size));
+        popdiff = 450*popPerc/100;
+        var diffSize = Math.floor(Number(countries[id].size));
         var sizePerc = Math.floor(diffSize/maxSizeDiff*100);
         sizediff = 450*sizePerc/100;
         $("#amount .bottom").width(popdiff+50 + "px")
         $("#amount .top")[0].style.marginLeft = popdiff+50 - 40 + "px";
-        $("#size .bottom").width(sizediff+50 + "px")
-        $("#size .top")[0].style.marginLeft = sizediff+50 - 40 + "px";
+        $("#sizes .bottom").width(sizediff+50 + "px")
+        $("#sizes .top")[0].style.marginLeft = sizediff+50 - 40 + "px";
         $("#stats").addClass("hover")
         $("#size").html(countries[id].size +"km<sup>2</sup>")
         $("#population").html(countries[id].population+"mln")
@@ -82,7 +78,6 @@ $(document).ready(function(){
         for(var x = 0; x < countries.length; x++){
             var thisDiff = maxSize - Number(countries[x].size);
             var perc = Math.floor(thisDiff/maxSizeDiff*100);
-            console.log(perc)
             var col = 150;
             if(perc<50){
                 if($("#"+countries[x].code)[0])$("#"+countries[x].code)[0].style.fill = "hsl(" + Math.floor(col*perc/100) + ",100%,50%)";
@@ -103,17 +98,16 @@ $(document).ready(function(){
                 break;
             }
         }
-        
-        var diffPop = Math.floor(maxPop - Number(countries[id].population));
+        var diffPop = Math.floor(Number(countries[id].population));
         var popPerc = Math.floor(diffPop/maxAmDiff*100);
-        popdiff = 400*popPerc/100; 
-        var diffSize = Math.floor(maxSize - Number(countries[id].size));
-        var sizePerc = Math.floor(diffSize/maxSizeDiff*100);
-        sizediff = 400*sizePerc/100;
+        popdiff = 450*popPerc/100; 
+        var diffSize = Math.floor(Number(countries[id].size));
+        var sizePerc = Math.floor((diffSize/maxSizeDiff)*100);
+        sizediff = 4.5*sizePerc;
         $("#amount .bottom").width(popdiff+50 + "px")
-        $("#amount .top")[0].style.marginLeft = popdiff+50 - 40 + "px";
-        $("#size .bottom").width(sizediff+50 + "px")
-        $("#size .top")[0].style.marginLeft = sizediff+50 - 40 + "px";
+        $("#amount .top")[0].style.marginLeft = popdiff+10 + "px";
+        $("#sizes .bottom").width(sizediff+50 + "px")
+        $("#sizes .top")[0].style.marginLeft = sizediff+10 + "px";
         $("#stats").addClass("hover")
         $("#size").html(countries[id].size +"km<sup>2</sup>")
         $("#population").html(countries[id].population+"mln")

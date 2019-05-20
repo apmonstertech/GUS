@@ -1,6 +1,5 @@
 class Net {
     constructor() { }
-
     ranked(fn) {
         $.ajax({
             url: "/ranking/ranked",

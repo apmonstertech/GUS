@@ -1,6 +1,5 @@
 class Net {
     constructor() { }
-
     sendData(action, fn) {
         $("#loader").show()
         $.ajax({
@@ -18,7 +17,6 @@ class Net {
             }
         });
     }
-
     sendScore(score) {
         $.ajax({
             url: "/quiz/starter/result",

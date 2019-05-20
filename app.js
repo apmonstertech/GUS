@@ -15,7 +15,6 @@ var bcrypt = require('bcryptjs');
 var mongo = require('mongodb');
 var mongoose = require('mongoose')
 
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var quizRouter = require('./routes/quiz');
@@ -39,7 +38,6 @@ app.engine('hbs', hbs({
 app.set('view engine', 'hbs')
 // hbs.localsAsTemplateData(app);
 
-
 //Handle File uploads
 // app.set('view engine', 'html');
 
@@ -48,9 +46,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cookieParser());
-
-
-
 
 var hour = 3600000;
 //Handle Sessions
@@ -104,9 +99,7 @@ app.use('/map', mapRouter);
 
 
 app.get('*', function (req, res, next) {
-  console.log(req.user)
   res.locals.user = req.user.username
-  console.log(res.locals.user)
   next()
 })
 
@@ -128,7 +121,6 @@ app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
   // render the error page
   res.status(err.status || 500);
   res.render('error');
